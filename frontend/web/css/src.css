@@ -1,0 +1,325 @@
+.access-form input[type="password"] {
+    border: 1px #e9edf8 solid;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    padding-left: 40px;
+    padding-right: 20px;
+    outline: none;
+    font-family: Roboto;
+    font-size: 15px;
+    color: #a6abab;
+}
+
+.access-form input[type="text"] {
+    border: 1px #e9edf8 solid;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    padding-left: 40px;
+    padding-right: 20px;
+    outline: none;
+    font-family: Roboto;
+    font-size: 15px;
+    color: #a6abab;
+}
+
+.help-block-error, .help-block {
+    color: #de012f;
+}
+
+#memebers_wrapper {
+    width: 80%;
+    margin: 20px 20px;
+}
+
+.my-content {
+    height: 100%;
+}
+
+.attachment {
+    display: flex;
+    align-items: center;
+}
+
+.attachment .delete-attachment {
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.attachment img {
+    width: 100px;
+    margin-right: 10px;
+}
+
+.user-name {
+    position: relative;
+}
+
+.user-name .user-down {
+    position: absolute;
+    width: 115px;
+    /*height: 18px;
+    background: #e7e7e7;
+    text-align: right;*/
+}
+
+.user-name .user-down a {
+    text-decoration: underline;
+}
+
+.fa {
+    cursor: pointer;
+}
+
+.fa-archive-active {
+    color: #333;
+}
+
+#projects-pending_approval {
+    color: #de012f;
+}
+
+#projects-submitted {
+    color: #96d700;
+}
+
+#projects-submission_process {
+    color: #512178;
+}
+
+#w0 label input[type="checkbox"] {
+    display: block;
+}
+
+.user-tag {
+    position: relative;
+    width: 100%;
+}
+
+.user-tag-list {
+    position: absolute;
+    background: #edeff0;
+    width: 200px;
+    border-radius: 2px;
+    height: 120px;
+    overflow: auto;
+    bottom: 0;
+    left: 35px;
+    border: 1px solid #d6dadc;
+}
+
+.user-tag-list li {
+    cursor: pointer;
+    margin: 1px;
+    padding: 5px 8px;
+    border: 1px solid #c8d1d6;
+    border-radius: 3px;
+}
+
+.user-tag-list li:hover {
+    background: #d6dadc;
+}
+
+.user-tag-list li.active-u {
+    background: #d6dadc;
+}
+
+#id_sent_comment, .project {
+    cursor: pointer;
+}
+
+.show-left-slide {
+    height: 100% !important;
+}
+
+@media screen and (max-width: 1280px) {
+    #show-right-slide, #show-left-slide {
+        margin-top: -48px !important;
+    }
+}
+
+div#id_checklist_buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+div#id_checklist_buttons button {
+    margin: 20px 0 0 15px;
+}
+
+#id_save_checklist {
+    background: #fff;
+    border-color: #96d700 !important;
+    color: #96d700;;
+}
+
+#id_save_checklist:hover {
+    background: #96d700;
+    color: #fff !important;
+}
+
+#id_project_title {
+    overflow: hidden;
+}
+
+.filter-tools {
+    min-width: 125px;
+}
+
+#id_checklists_data .delete-checklist {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: #de012f;
+    display: none;
+    cursor: pointer;
+}
+
+#id_checklists_data .txt-without-icon:hover > .delete-checklist {
+    display: block;
+}
+
+#id_checklists_data .txt-without-icon:hover {
+    background-color: #e9ecef;
+}
+
+#id_project_title {
+    font-size: 20px;
+}
+
+#w0-cols-list .checkbox input {
+    display: block !important;
+}
+
+.notifications {
+    z-index: 2;
+    display: none;
+    font-size: 12px;
+    /*padding: 5px;*/
+    right: 47px;
+    height: 200px;
+    overflow: auto;
+    /*background: #f4f4f4;*/
+    width: 200px;
+    position: absolute;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+    background: #fff;
+    border-radius: 3px;
+}
+
+.not-title {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.not-title hr {
+    width: 91%;
+}
+
+.notifications .icon-close {
+    color: #6d6d6d;
+    position: absolute;
+    right: 6px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.notifications .icon-close:hover {
+    color: black;
+}
+
+.notifications li {
+    padding: 5px;
+}
+
+.notifications li a {
+    cursor: pointer;
+}
+
+.notifications li a:hover {
+    text-decoration: underline;
+}
+
+.notifications .active-not a {
+    color: #de012f;
+}
+
+.project-info span {
+    font-style: italic;
+}
+
+.attach-file-block {
+    position: relative;
+}
+
+#id_close_attach_file {
+    position: absolute;
+    left: 439px;
+    top: -6px;
+    color: red;
+    cursor: pointer;
+}
+
+#projects-data-t_filter input {
+    border: 1px solid;
+}
+
+#projects-data-t td {
+    text-align: center;
+}
+
+#projects-data-t .description-t {
+    text-align: left;
+}
+
+#projects {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#id_pop_submitted, #id_pop_accepted {
+    top: 37px;
+    max-width: 100% !important;
+}
+
+#id_pop_moderator {
+    top: 269px;
+}
+
+.m-members .access-form input[type="password"] {
+    border: 1px #e9edf8 solid;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    padding-left: 40px;
+    padding-right: 20px;
+    outline: none;
+    font-family: Roboto;
+    font-size: 15px;
+    color: #a6abab;
+}
+
+.m-members .access-form input[type="password"] {
+    box-shadow: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#id_pop_moderator {
+    max-width: 223px !important;
+}
+
+#id_pop_moderator #id_checklist_buttons {
+    text-align: center;
+}
+
+#id_save_moderator {
+    margin: auto !important;
+}
+
+.datepicker table tr td.old, .datepicker table tr td.new {
+    color: #bbbbbb !important;
+}
