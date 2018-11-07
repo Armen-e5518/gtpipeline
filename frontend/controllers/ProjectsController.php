@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use frontend\components\Helper;
+use frontend\components\Mail;
 use frontend\models\Companies;
 use frontend\models\Countries;
 use frontend\models\ProjectAttachments;
@@ -241,7 +242,7 @@ class ProjectsController extends Controller
                 }
             }
             if ($errors && UserNotifications::NewNotificationsByUsers(Yii::$app->request->post('members'), $model->id, 1)) {
-
+                Mail::SandMailAllUsers($model->id);
                 return $this->redirect(['site/projects']);
             }
         }
@@ -265,7 +266,7 @@ class ProjectsController extends Controller
 
         $errors = true;
         $model = $this->findModel($id);
-        if(!Yii::$app->rule_check->CheckByKay(['super_admin']) && !$model['creator_id'] == Yii::$app->user->getId()){
+        if (!Yii::$app->rule_check->CheckByKay(['super_admin']) && !$model['creator_id'] == Yii::$app->user->getId()) {
             return $this->redirect(['site/projects']);
         }
         if ($model->load(Yii::$app->request->post())

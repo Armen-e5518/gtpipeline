@@ -15,6 +15,11 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
+<style>
+    #user-ebrd{
+        display: inherit;
+    }
+</style>
 
 <div class="user-form">
     <?php $form = ActiveForm::begin([
@@ -91,6 +96,8 @@ use yii\widgets\ActiveForm;
                 ]);
                 ?>
             </div>
+            <?= $form->field($model, 'ebrd')->checkbox(['maxlength' => true,'title' => $model->getAttributeLabel('ebrd'), 'placeholder' => $model->getAttributeLabel('ebrd')]) ?>
+
         </div>
     </div>
     <div class="row">

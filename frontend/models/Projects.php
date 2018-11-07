@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use frontend\components\Helper;
 use kartik\helpers\Html;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -27,6 +28,7 @@ use yii\web\UploadedFile;
  * @property string $beneficiary_stakeholder
  * @property integer $status
  * @property integer $state
+ * @property integer $budget_int
  * @property integer $moderator_id
  * @property integer $creator_id
  * @property integer $groups_flag
@@ -57,6 +59,7 @@ use yii\web\UploadedFile;
  * @property string $actual_services_description
  * @property string $GetIndustryById
  * @property string $name_firm
+ * @property string $project_code
  */
 class Projects extends \yii\db\ActiveRecord
 {
@@ -71,14 +74,14 @@ class Projects extends \yii\db\ActiveRecord
 
     const STATUS_DELETE = 0;
 
-    const STATUS = [
+    const STATUS = array(
         0 => "Pending approval",
         1 => "In progress",
         2 => "Submitted",
         3 => "Accepted",
         4 => "Dismiss",
         5 => "Rejected",
-    ];
+    );
 
     const IMPORTANT = [
         0 => "Important 1",
@@ -114,12 +117,12 @@ class Projects extends \yii\db\ActiveRecord
             [['attachments'], 'file'],
             [['ifi_name', 'project_name', 'deadline', 'request_issued'], 'required'],
             [['tender_stage', 'project_dec'], 'string'],
-            [['status', 'state', 'importance_1', 'importance_2', 'importance_3', 'international_status', 'moderator_id', 'creator_id', 'groups_flag'], 'integer'],
+            [['status', 'state', 'importance_1', 'importance_2', 'importance_3', 'international_status', 'moderator_id', 'creator_id', 'groups_flag', 'budget_int'], 'integer'],
             [['industry_id', 'service_id', 'assignment_id', 'staff_months', 'proportion', 'no_professional_staff', 'no_provided_staff'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['ifi_name', 'project_name', 'request_issued', 'deadline', 'budget', 'duration', 'eligibility_restrictions', 'selection_method', 'submission_method', 'evaluation_decision_making', 'beneficiary_stakeholder'], 'string', 'max' => 255],
             [['client_name', 'project_value', 'consultants', 'lead_partner', 'partner_contact', 'location_within_country', 'address_client', 'duration_assignment', 'services_value', 'start_date', 'completion_date'], 'string', 'max' => 255],
-            [['name_senior_professional', 'actual_services_description', 'name_firm'], 'string', 'max' => 255],
+            [['name_senior_professional', 'actual_services_description', 'name_firm', 'project_code'], 'string', 'max' => 255],
         ];
     }
 
@@ -163,7 +166,7 @@ class Projects extends \yii\db\ActiveRecord
             'consultants' => 'Associated consultants, if any ',
             'lead_partner' => 'Lead partner ',
             'partner_contact' => 'Partner contact',
-            'location_within_country' => 'Location within country',
+            'location_within_country' => 'Country',
 
             'address_client' => 'Address of client',
             'duration_assignment' => 'Duration of assignment (months)',
@@ -178,6 +181,7 @@ class Projects extends \yii\db\ActiveRecord
             'no_provided_staff' => 'No of staff provided by the firm ', //int
             'narrative_description' => 'Narrative description of project ',
             'actual_services_description' => 'Description of actual services provided by your staff within the assignment ',
+            'project_code' => 'Project code',
         ];
     }
 
@@ -188,6 +192,7 @@ class Projects extends \yii\db\ActiveRecord
     {
         if (empty($this->creator_id)) {
             $this->creator_id = Yii::$app->user->getId();
+            $this->budget_int = Helper::GetNumberInString($this->budget);
             $this->save();
 
         }

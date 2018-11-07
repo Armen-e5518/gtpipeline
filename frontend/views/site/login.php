@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'username')->textInput([
                         'autofocus' => true,
                         'placeholder' => 'Username / Email'
-                    ])->label(false) ?>
+                    ])->label(false); ?>
                 </label>
             </div>
             <div class="login-component">

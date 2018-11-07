@@ -1,7 +1,7 @@
 <?php
 return [
     'adminEmail' => 'admin@example.com',
-    'domain' => 'http://gtnew.apps.am',
+    'domain' => 'http://gtpipeline.com',
     'attachments_url' => '/attachments/',
     'user_url' => '/uploads/',
 ];

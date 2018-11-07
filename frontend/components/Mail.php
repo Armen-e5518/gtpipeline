@@ -38,20 +38,50 @@ class Mail extends Component
             $user = User::GetUserById($user_id);
             $project = Projects::GetProjectDataById($project_id);
             if ($type == 0) {
-                return self::SandMail($user['email'],
-                    'You were tagged in the comment',
-                    "You were tagged in the comment, Project name: {$project['project_name']} " . \Yii::$app->params['domain']
-                );
+                return \Yii::$app->mailer
+                    ->compose([
+                        'html' => 'comment',
+                        'text' => 'comment'
+                    ], ['project' => $project])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setTo($user['email'])
+                    ->setSubject('You were tagged in the comment')
+                    ->send();
             } elseif ($type == 1) {
-                return self::SandMail(
-                    $user['email'],
-                    'You have a new project',
-                    "You have a new project, Project name: {$project['project_name']} " . \Yii::$app->params['domain']
-                );
+                return \Yii::$app->mailer
+                    ->compose([
+                        'html' => 'new-project-join',
+                        'text' => 'new-project-join'
+                    ], ['project' => $project])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setTo($user['email'])
+                    ->setSubject('You have a new project')
+                    ->send();
             }
         }
         return true;
     }
+
+    public static function SandMailAllUsers($project_id = null)
+    {
+        if (!empty($project_id)) {
+            $users = User::GetAllUsers();
+            $project = Projects::GetProjectDataById($project_id);
+            foreach ($users as $user) {
+                \Yii::$app->mailer
+                    ->compose([
+                        'html' => 'new-project',
+                        'text' => 'new-project'
+                    ], ['project' => $project])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setTo($user['email'])
+                    ->setSubject('New project')
+                    ->send();
+            }
+        }
+        return true;
+    }
+
 
     public static function SandMail($email = null, $title = '', $text = '')
     {

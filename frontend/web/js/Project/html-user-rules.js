@@ -150,7 +150,7 @@ function GetAssignTasksEdit(OpenFlag) {
             '<button style="display:none;"' +
             'id="id_add_checklist"' +
             'class="transparent-bg violet-border violet-txt font-15 w-100-perc font-w-500">' +
-            '<i class="fa fa-calendar-check-o"></i>Create task' +
+            '<i class="fa fa-calendar-check-o"></i>&nbsp;Create task' +
             '</button>' +
             '<div style="display: none" id="id_create_checklist"' +
             'class="subpopup filtering-popup card-detail-popup brd-rad-4 p-rel">' +

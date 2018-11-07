@@ -1,7 +1,7 @@
 <?php
 namespace frontend\components;
 
-use Ratchet\MessageComponentInterface;
+use  Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
 class Chat implements MessageComponentInterface {

@@ -2,7 +2,10 @@
 
 namespace frontend\models\search;
 
+use frontend\components\Helper;
+use frontend\models\Countries;
 use frontend\models\Industrys;
+use frontend\models\ProjectCountries;
 use frontend\models\Services;
 use Yii;
 use yii\base\Model;
@@ -47,6 +50,8 @@ class ProjectsSearch extends Projects
                     'partner_contact',
                     'industry_id',
                     'service_id',
+                    'project_code',
+                    'budget_int',
                 ],
                 'safe'
             ],
@@ -76,6 +81,7 @@ class ProjectsSearch extends Projects
             ->leftJoin(Industrys::tableName() . ' i', 'i.id = p.industry_id')
             ->leftJoin(Services::tableName() . ' s', 's.id = p.service_id');
 
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -97,13 +103,19 @@ class ProjectsSearch extends Projects
                 'status',
                 'industry_id',
                 'service_id',
+                'project_code',
             ],
             'defaultOrder' => [
                 'name_firm' => SORT_DESC,
             ]
         ]);
         $this->load($params);
-
+        if ($this->location_within_country) {
+            $query->leftJoin(ProjectCountries::tableName() . ' pc', 'p.id = pc.project_id')
+                ->leftJoin(Countries::tableName() . ' c', 'c.id = pc.country_id')
+                ->andWhere(['c.id' => $this->location_within_country])
+                ->groupBy('p.id');
+        }
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -116,33 +128,40 @@ class ProjectsSearch extends Projects
             'status' => $this->status,
             'state' => $this->state,
             'name_firm' => $this->name_firm,
-            'budget' => $this->budget,
             'partner_contact' => $this->partner_contact,
             'lead_partner' => $this->lead_partner,
             'consultants' => $this->consultants,
-            'location_within_country' => $this->location_within_country,
+//            'location_within_country' => $this->location_within_country,
             'project_value' => $this->project_value,
 
         ]);
 
+        if (!empty($this->budget)) {
+            $q = Helper::GetNumericQuery($this->budget);
+            if (!empty($q)) {
+                $query->andFilterWhere([$q['kay'], 'p.budget_int', (int)$q['val']]);
+            } else {
+                $query->andFilterWhere(['like', 'p.budget', $this->budget]);
+            }
+
+        }
         $query
+            ->andFilterWhere(['like', 'p.project_code', $this->project_code])
             ->andFilterWhere(['like', 'p.ifi_name', $this->ifi_name])
             ->andFilterWhere(['like', 'p.name_firm', $this->name_firm])
             ->andFilterWhere(['like', 'i.id', $this->industry_id])
             ->andFilterWhere(['like', 's.id', $this->service_id])
             ->andFilterWhere(['like', 'p.client_name', $this->client_name])
-            ->andFilterWhere(['like', 'p.budget', $this->budget])
             ->andFilterWhere(['like', 'p.partner_contact', $this->partner_contact])
             ->andFilterWhere(['like', 'p.lead_partner', $this->lead_partner])
             ->andFilterWhere(['like', 'p.consultants', $this->consultants])
             ->andFilterWhere(['like', 'p.project_value', $this->project_value])
-            ->andFilterWhere(['like', 'p.location_within_country', $this->location_within_country])
+//            ->andFilterWhere(['like', 'p.location_within_country', $this->location_within_country])
             ->andFilterWhere(['like', 'p.project_name', $this->project_name])
             ->andFilterWhere(['like', 'p.project_dec', $this->project_dec])
             ->andFilterWhere(['like', 'p.tender_stage', $this->tender_stage])
             ->andFilterWhere(['like', 'p.request_issued', $this->request_issued])
             ->andFilterWhere(['like', 'p.deadline', $this->deadline])
-            ->andFilterWhere(['like', 'p.budget', $this->budget])
             ->andFilterWhere(['like', 'p.duration', $this->duration])
             ->andFilterWhere(['like', 'p.eligibility_restrictions', $this->eligibility_restrictions])
             ->andFilterWhere(['like', 'p.selection_method', $this->selection_method])

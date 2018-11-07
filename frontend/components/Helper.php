@@ -253,4 +253,44 @@ class Helper extends Component
         return $a;
     }
 
+    public static function GetNumberInString($string)
+    {
+        if (!empty($string)) {
+            $string = trim($string);
+            $string = str_replace(' ', '', $string);
+            $string = str_replace(',', '', $string);
+            $string = str_replace('.', '', $string);
+            $numbers = self::get_numerics($string);
+            if (!empty($numbers)) {
+                return max($numbers);
+            }
+        }
+        return null;
+    }
+
+    public static function get_numerics($str)
+    {
+        preg_match_all('/\d+/', $str, $matches);
+        return $matches[0];
+    }
+
+    public static function GetNumericQuery($string)
+    {
+        if (!empty($string)) {
+            $string = trim($string);
+            if($string{0} == '>'){
+                return [
+                    'kay' => '>',
+                    'val' => substr($string, 1),
+                ];
+            }
+            if($string{0} == '<'){
+                return [
+                    'kay' => '<',
+                    'val' => substr($string, 1),
+                ];
+            }
+        }
+        return false;
+    }
 }

@@ -23,7 +23,13 @@ use kartik\file\FileInput;
             <?= $form->field($model, 'client_name')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('client_name'), 'placeholder' => $model->getAttributeLabel('client_name')])->label(false) ?>
             <?= $form->field($model, 'project_name')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('project_name'), 'placeholder' => $model->getAttributeLabel('project_name')])->label(false) ?>
             <?= $form->field($model, 'project_dec')->textarea(['maxlength' => true, 'title' => $model->getAttributeLabel('project_dec'), 'row' => 8, 'placeholder' => $model->getAttributeLabel('project_dec')])->label(false) ?>
-            <?= $form->field($model, 'tender_stage')->dropDownList(['Proposal' => 'Proposal', 'Eol' => 'Eol',], ['prompt' => '']) ?>
+            <?= $form->field($model, 'tender_stage')->dropDownList([
+                    'Proposal' => 'Proposal',
+                    'Eol' => 'Eol',
+                    'General procurement notice' => 'General procurement notice',
+                    'Early intelligence' => 'Early intelligence',
+                ]
+                , ['prompt' => '']) ?>
             <?= DatePicker::widget([
                 'model' => $model,
                 'name' => 'request_issued',
@@ -63,6 +69,7 @@ use kartik\file\FileInput;
             <?= $form->field($model, 'submission_method')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('submission_method'), 'placeholder' => $model->getAttributeLabel('submission_method')])->label(false) ?>
             <?= $form->field($model, 'evaluation_decision_making')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('evaluation_decision_making'), 'placeholder' => $model->getAttributeLabel('evaluation_decision_making')])->label(false) ?>
             <?= $form->field($model, 'beneficiary_stakeholder')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('beneficiary_stakeholder'), 'placeholder' => $model->getAttributeLabel('beneficiary_stakeholder')])->label(false) ?>
+            <?= $form->field($model, 'project_code')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('project_code'), 'placeholder' => $model->getAttributeLabel('project_code')])->label(false) ?>
             <?= $form->field($model, 'status')->dropDownList($model::STATUS); ?>
             <div class="add-countries">
                 <?= \kartik\select2\Select2::widget([
@@ -162,7 +169,11 @@ use kartik\file\FileInput;
         </div>
     <?php endif; ?>
     <div class="form-group col-md-12" style="margin-top: 20px">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-success','id' => 'save_form']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-success', 'id' => 'save_form']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>
+
+<script>
+
+</script>

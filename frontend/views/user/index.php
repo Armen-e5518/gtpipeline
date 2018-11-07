@@ -96,6 +96,40 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]),
                         ],
                         [
+                            'attribute' => 'Companies',
+                            'format' => 'html',
+                            'value' => function ($data) {
+                                $company = $data->GetCompany(($data->company_id));
+                                return "<span>{$company}</span>";
+                            },
+                            'filter' => \kartik\select2\Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'company_id',
+                                'data' => \frontend\models\Companies::GetCompanies(),
+                                'options' => [
+                                    'placeholder' => 'Companies...',
+                                ]
+                            ]),
+                        ],
+                        [
+                            'attribute' => 'ebrd',
+                            'format' => 'html',
+                            'value' => function ($data) {
+                                return ($data->ebrd == 1) ? "<span  style='color:#00adc7;'>Yes</span>" : "No";
+                            },
+                            'filter' => \kartik\select2\Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'ebrd',
+                                'data' => [
+                                    0 => 'No',
+                                    1 => 'Yes'
+                                ],
+                                'options' => [
+                                    'placeholder' => 'Ebrd...',
+                                ]
+                            ]),
+                        ],
+                        [
                             'attribute' => 'image_url',
                             'format' => 'html',
                             'value' => function ($data) {
@@ -106,8 +140,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'attribute' => 'Status',
+                            'format' => 'html',
                             'value' => function ($data) {
-                                return ($data->status == 10) ? "Active" : "Inactive";
+                                return ($data->status == 10) ? "<span  style='color:#00adc7;'>Active</span>" : "Inactive";
                             },
                             'filter' => \kartik\select2\Select2::widget([
                                 'model' => $searchModel,

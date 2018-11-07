@@ -74,6 +74,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                     'consultants',
                     'lead_partner',
                     'partner_contact',
+                    'project_code',
 
                 ];
 
@@ -88,7 +89,28 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                     'client_name',
                     'ifi_name',
                     'project_name',
-                    'location_within_country',
+//                    '',
+                    [
+                        'attribute' => 'location_within_country',
+                        'format' => 'html',
+                        'value' => function ($data) {
+                            $s = '<ul>';
+                            $data = \frontend\models\ProjectCountries::GetCountriesNameByProjectIdAllData($data->id);
+                            foreach ($data as $r) {
+                                $s .= '<li>' . $r . '</li>';
+                            }
+                            $s .= '</ul>';
+                            return $s;
+                        },
+                        'filter' => \kartik\select2\Select2::widget([
+                            'model' => $searchModel,
+                            'attribute' => 'location_within_country',
+                            'data' => \frontend\models\Countries::GetCountries(),
+                            'options' => [
+                                'placeholder' => 'Countries...',
+                            ]
+                        ]),
+                    ],
                     [
                         'attribute' => 'status',
                         'value' => function ($model) {
@@ -138,6 +160,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                     'consultants',
                     'lead_partner',
                     'partner_contact',
+                    'project_code',
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'header' => 'Actions',
@@ -176,11 +199,13 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                         ]
 
                 ]);
+//                \yii\widgets\Pjax::begin(['id' => 'medicine']);
                 echo \kartik\grid\GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => $gridColumns,
                 ]);
+//                \yii\widgets\Pjax::end();
                 ?>
             </div>
         </div>

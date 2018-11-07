@@ -13,6 +13,7 @@ use frontend\models\ProjectMembers;
 use frontend\models\Projects;
 use frontend\models\User;
 use frontend\models\UserNotifications;
+use frontend\models\UsersGrup;
 use Yii;
 use yii\web\Controller;
 use \yii\web\Response;
@@ -196,6 +197,14 @@ class AjaxController extends Controller
         if (Yii::$app->request->isAjax) {
             \Yii::$app->response->format = Response::FORMAT_JSON;
             return User::GetAllUsers();
+        }
+    }
+
+    public function actionGetAllUsersGroups()
+    {
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = Response::FORMAT_JSON;
+            return UsersGrup::GetGroupsForJS();
         }
     }
 

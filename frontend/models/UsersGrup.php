@@ -46,6 +46,23 @@ class UsersGrup extends \yii\db\ActiveRecord
         return self::find()->select(["name", 'id'])->indexBy('id')->column();
     }
 
+    public static function GetGroupsForJS()
+    {
+        $groups = self::GetGroups();
+        $ForJS = [];
+        $s = [];
+        if (!empty($groups)) {
+            foreach ($groups as $k => $group) {
+                $s['id'] = 'g_' . $k;
+                $s['username'] = str_replace(' ', '.', $group);;
+                $s['firstname'] = '(Group) ' . $group;
+                $s['lastname'] = '';
+                $ForJS[] = $s;
+            }
+        }
+        return $ForJS;
+    }
+
     public function GetUsersByGroupId($group_id = null)
     {
         if (!empty($group_id)) {

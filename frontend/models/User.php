@@ -23,6 +23,7 @@ use yii\web\UploadedFile;
  * @property integer company_id
  * @property integer country_id
  * @property integer rule_id
+ * @property integer ebrd
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -71,7 +72,7 @@ class User extends \yii\db\ActiveRecord
 
             [['imageFile'], 'file', 'extensions' => 'png, jpg'],
             [['lastname', 'firstname', 'email'], 'required'],
-            [['status', 'created_at', 'updated_at', 'company_id', 'group_id', 'country_id'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'company_id', 'group_id', 'country_id','ebrd'], 'integer'],
             [['lastname', 'firstname', 'password_reset_token', 'email', 'image_url'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['password_reset_token'], 'unique'],
@@ -98,6 +99,7 @@ class User extends \yii\db\ActiveRecord
             'image_url' => 'Image',
             'company_id' => 'Company',
             'group_id' => 'group id',
+            'ebrd' => 'EBRD Champion',
         ];
     }
 
@@ -131,6 +133,7 @@ class User extends \yii\db\ActiveRecord
         $user->lastname = $this->lastname;
         $user->image_url = $this->image_url;
         $user->status = $this->status;
+        $user->ebrd = $this->ebrd;
         $user->setPassword($this->password_hash);
         return $user->save() ? $user->getId() : false;
     }
@@ -153,6 +156,7 @@ class User extends \yii\db\ActiveRecord
             $user->image_url = $this->image_url;
             $user->status = $this->status;
             $user->company_id = $this->company_id;
+            $user->ebrd = $this->ebrd;
             return $user->save() ? $user->id : false;
         }
         return false;

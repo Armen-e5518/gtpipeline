@@ -3,7 +3,7 @@
     <ul class="left-slide-menu">
         <li><a href="/site/projects"
                class="d-block prospects <?= $active == 'prospects' ? 'active' : '' ?>  no-underline white-txt"><i
-                        class="fa fa-file-text-o"></i>Prospects</a>
+                        class="fa fa-filter"></i>Prospects</a>
         </li>
         <?php if (Yii::$app->rule_check->CheckByKay(['super_admin'])): ?>
             <li><a href="/users"
@@ -27,6 +27,12 @@
                class="d-block  <?= $active == 'reports' ? 'active' : '' ?> countries no-underline white-txt"><i
                         class="fa fa-bar-chart" aria-hidden="true"></i>Reports</a>
         </li>
+        <?php if (Yii::$app->rule_check->CheckByKay(['super_admin'])): ?>
+            <li><a href="/all-documents"
+                   class="d-block  <?= $active == 'document' ? 'active' : '' ?> countries no-underline white-txt"><i
+                            class="fa  fa-file-text-o"></i>Documents</a>
+            </li>
+        <?php endif; ?>
     </ul>
     <?php if (Yii::$app->rule_check->CheckByKay(['super_admin']) || Yii::$app->rule_check->CheckByKay(['moderator'])): ?>
         <a href="/projects/create" class="add-new-block  no-underline white-txt"><i></i>Add new prospect</a>

@@ -27,7 +27,9 @@ class UserSearch extends User
                     'status',
                     'country_id',
                     'created_at',
-                    'updated_at'
+                    'updated_at',
+                    'company_id',
+                    'ebrd',
                 ],
                 'integer'],
             [['username', 'lastname', 'firstname', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'country_id','rule_id'], 'safe'],
@@ -77,6 +79,8 @@ class UserSearch extends User
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'ebrd' => $this->ebrd,
+            'company_id' => $this->company_id,
         ]);
 
         $query

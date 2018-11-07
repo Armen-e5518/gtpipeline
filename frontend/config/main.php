@@ -45,6 +45,7 @@ return [
         'rule_check' => [
             'class' => 'frontend\components\CheckRules',
         ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -53,6 +54,7 @@ return [
                 'users' => 'user/index',
                 'firms' => 'companies/index',
                 'reports' => 'projects/index',
+                'all-documents' => 'documents/index',
                 'users-group' => 'users-grup/index',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],

@@ -63,7 +63,7 @@ $(document).ready(function () {
         GetProjectMembersListByProjectId(data.id);
 
         commentInterval = setInterval(function () {
-            GetComments(data)
+            // GetComments(data)
         }, 5000)
         console.log(data.id);
 
