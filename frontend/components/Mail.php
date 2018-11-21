@@ -12,6 +12,7 @@ use frontend\models\ChecklistUsers;
 use frontend\models\Companies;
 use frontend\models\Countries;
 use frontend\models\ProjectChecklists;
+use frontend\models\ProjectCountries;
 use frontend\models\Projects;
 use frontend\models\User;
 use yii\base\Component;
@@ -43,7 +44,7 @@ class Mail extends Component
                         'html' => 'comment',
                         'text' => 'comment'
                     ], ['project' => $project])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
                     ->setTo($user['email'])
                     ->setSubject('You were tagged in the comment')
                     ->send();
@@ -53,9 +54,9 @@ class Mail extends Component
                         'html' => 'new-project-join',
                         'text' => 'new-project-join'
                     ], ['project' => $project])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
                     ->setTo($user['email'])
-                    ->setSubject('You have a new project')
+                    ->setSubject('Project assigned '.$project->project_code)
                     ->send();
             }
         }
@@ -67,15 +68,19 @@ class Mail extends Component
         if (!empty($project_id)) {
             $users = User::GetAllUsers();
             $project = Projects::GetProjectDataById($project_id);
+            $countries = ProjectCountries::GetCountriesNameByProjectIdString($project_id);
             foreach ($users as $user) {
                 \Yii::$app->mailer
                     ->compose([
                         'html' => 'new-project',
                         'text' => 'new-project'
-                    ], ['project' => $project])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ], [
+                        'project' => $project,
+                        'countries' => $countries
+                    ])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
                     ->setTo($user['email'])
-                    ->setSubject('New project')
+                    ->setSubject('New project ' . $project->project_code . ' ' .$countries)
                     ->send();
             }
         }
@@ -88,7 +93,7 @@ class Mail extends Component
         return \Yii::$app
             ->mailer
             ->compose()
-            ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+            ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
             ->setTo($email)
             ->setSubject($title)
             ->setTextBody($text)

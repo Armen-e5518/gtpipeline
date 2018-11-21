@@ -101,7 +101,7 @@ class SiteController extends Controller
             ]));
         } else {
             $cookies_g = Yii::$app->request->cookies;
-            $get = !empty($cookies_g->getValue('gt_filter')) ? $cookies_g->getValue('gt_filter') : ['pending_approval' => 'on'];
+            $get = !empty($cookies_g->getValue('gt_filter')) ? $cookies_g->getValue('gt_filter') : [];
         }
 //        Helper::dd(Helper::GetFilterResets(['/site/index'], $get));
 //        exit;

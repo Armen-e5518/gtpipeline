@@ -166,8 +166,8 @@ class Projects extends \yii\db\ActiveRecord
             'staff_months' => 'Total No. of staff-months of the assignment', //int
             'services_value' => 'Approx. value of the services provided by the firm under the contract (in current US$ or Euro)',
             'start_date' => 'Start date (month/year)',
-            'completion_date' => 'Completion date (month/year) ',
-            'name_senior_professional' => 'Name of senior professional staff of your firm involved and functions performed(indicate most significant profiles such as ProjectDirector/Coordinator,Team Leader) ',
+            'completion_date' => 'Completion date (year/month) ',
+            'name_senior_professional' => 'Name of senior professional staff of your firm involved and functions performed (indicate most significant profiles such as Project Director / Coordinator, Team Leader)',
             'assignment_id' => 'Role on the Assignment ', //int
             'proportion' => 'Proportion carried out by the firm, % ', //int
             'no_professional_staff' => 'No. of professional staff-months provided by associated consultants ', //int

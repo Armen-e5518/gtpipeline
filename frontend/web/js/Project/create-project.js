@@ -1,8 +1,6 @@
 var submitted = false;
-
 $(document).ready(function () {
     window.onbeforeunload = function (e) {
-        console.log('submitted',submitted);
         if ( !submitted) {
             var message = "Your changes will be not saved. Are you sure you want to leave?", e = e || window.event;
             if (e) {
@@ -11,13 +9,12 @@ $(document).ready(function () {
             return message;
         }
     };
-
-    $("#save_form").click(function() {
-        submitted = true;
+    $(document).on('click', function(e) {
+        if($(e.target).hasClass("save-form")) {
+            submitted = true;
+        }else {
+            submitted = false;
+        }
     });
-
-    setInterval(function () {
-        submitted = false;
-    },500)
 
 });

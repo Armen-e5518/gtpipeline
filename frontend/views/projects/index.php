@@ -45,6 +45,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                             return (int)($index + 1);
                         }
                     ],
+                    'project_code',
                     'name_firm',         //Firm name
                     'client_name',
                     'ifi_name',
@@ -72,9 +73,9 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                         },
                     ],
                     'consultants',
-                    'lead_partner',
-                    'partner_contact',
-                    'project_code',
+//                    'lead_partner',
+//                    'partner_contact',
+
 
                 ];
 
@@ -85,6 +86,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                             return (int)($index + 1);
                         }
                     ],
+                    'project_code',
                     'name_firm',         //Firm name
                     'client_name',
                     'ifi_name',
@@ -158,9 +160,9 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                         },
                     ],
                     'consultants',
-                    'lead_partner',
-                    'partner_contact',
-                    'project_code',
+//                    'lead_partner',
+//                    'partner_contact',
+
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'header' => 'Actions',

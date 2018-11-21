@@ -1,6 +1,6 @@
 <?php
 return [
-    'adminEmail' => 'armen5518@gmail.com',
-    'supportEmail' => 'armen5518@gmail.com',
+    'adminEmail' => 'no-reply@gtpipeline.com',
+    'supportEmail' => 'no-reply@gtpipeline.com',
     'user.passwordResetTokenExpire' => 3600,
 ];

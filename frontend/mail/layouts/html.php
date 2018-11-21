@@ -457,7 +457,6 @@ use yii\helpers\Html;
                                                     <br>
                                                     <br>
                                                     <br>
-                                                    <h5>Best wishes from, <br> All at Grant Thornton</h5>
                                                 </td>
                                             </tr>
                                             </tbody>

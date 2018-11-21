@@ -393,6 +393,7 @@ class AjaxController extends Controller
             \Yii::$app->response->format = Response::FORMAT_JSON;
             $post = Yii::$app->request->post();
             if (!empty($post)) {
+                Mail::SandMailByType($post['user_id'], $post['project_id'], 1);
                 return Projects::SaveModerator($post['user_id'], $post['project_id']);
             }
         }

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </label>
             </div>
             <div class="login-component">
-                <button>sign-in</button>
+                <button>Reset</button>
             </div>
         </div>
         <?php ActiveForm::end(); ?>

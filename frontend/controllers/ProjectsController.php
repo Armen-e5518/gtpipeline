@@ -152,14 +152,14 @@ class ProjectsController extends Controller
             'borderColor' => '000000',
             'borderSize' => 6,
         );
-        $firstRowStyle = array('bgColor' => '000000');
+        $firstRowStyle = array('bgColor' => '#512178');
         $phpWord->addTableStyle('myTable', $tableStyle, $firstRowStyle);
         $table = $section->addTable('myTable');
 
         $cellRowSpan = array('vMerge' => 'restart');
         $cellRowContinue = array('vMerge' => 'continue');
         $cellColSpan = array('gridSpan' => 2);
-
+//        name_senior_professional
         $table->addRow();
         $table->addCell(5000, $cellRowSpan)->addText("Assignment name: {$project['project_name']}");
         $table->addCell(5000, $cellRowSpan)->addText("Approx. value of the contract (in current US$ or Euro): {$project['project_value']}");
@@ -176,10 +176,10 @@ class ProjectsController extends Controller
         $table->addCell(5000, $cellRowSpan)->addText("Address of Client: {$project['address_client']}");
         $table->addCell(5000, $cellRowSpan)->addText("Approx. value of the services provided by the firm under the contract (in current US \$or Euro): {$project['services_value']}");
         $table->addRow();
-        $table->addCell(5000, $cellRowSpan)->addText("Start date (month/year): {$project['start_date']}");
-        $table->addCell(5000, $cellRowSpan)->addText("No. of professional staff-months provided by associated consultants: {$project['start_date']}");
+        $table->addCell(5000, $cellRowSpan)->addText("Start date (year/month): {$project['start_date']}");
+        $table->addCell(5000, $cellRowSpan)->addText("Name of senior professional staff of your firm involved and functions performed: {$project['name_senior_professional']}");
         $table->addRow();
-        $table->addCell(5000, $cellRowSpan)->addText("Completion date (month/year): {$project['completion_date']}");
+        $table->addCell(5000, $cellRowSpan)->addText("Completion date (year/month): {$project['completion_date']}");
         $table->addCell(null, $cellRowContinue);
         $table->addRow();
         $table->addCell(5000, $cellRowSpan)->addText("Role on the Assignment: {$model->GetAssignmentById($project['assignment_id'])}");
@@ -243,6 +243,7 @@ class ProjectsController extends Controller
             }
             if ($errors && UserNotifications::NewNotificationsByUsers(Yii::$app->request->post('members'), $model->id, 1)) {
                 Mail::SandMailAllUsers($model->id);
+                die;
                 return $this->redirect(['site/projects']);
             }
         }

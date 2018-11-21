@@ -169,7 +169,7 @@ use kartik\file\FileInput;
         </div>
     <?php endif; ?>
     <div class="form-group col-md-12" style="margin-top: 20px">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-success', 'id' => 'save_form']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => 'btn btn-success save-form', 'id' => 'save_form']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>

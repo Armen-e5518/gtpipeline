@@ -570,7 +570,7 @@ $this->title = 'Grant Thornton';
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
-                <span>Start date (month/year)</span>
+                <span>Start date (year/month)</span>
                 <select id="id_start_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
@@ -580,7 +580,7 @@ $this->title = 'Grant Thornton';
                 </select>
             </div>
             <div class="list-data">
-                <span>Completion date (month/year)</span>
+                <span>Completion date (year/month)</span>
                 <select id="id_completion_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
@@ -590,7 +590,7 @@ $this->title = 'Grant Thornton';
                 </select>
             </div>
             <div class="list-data">
-                <span>Name of senior professional staff of your firm involved and functions performed(indicate most significant profiles such as ProjectDirector/Coordinator,Team Leader)</span>
+                <span>Name of senior professional staff of your firm involved and functions performed (indicate most significant profiles such as Project Director / Coordinator, Team Leader)</span>
                 <input id="id_name_senior_professional"
                        type="text"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">

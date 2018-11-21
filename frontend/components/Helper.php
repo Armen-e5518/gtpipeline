@@ -100,13 +100,13 @@ class Helper extends Component
             }
             if ($kay == 'accepted') {
                 $new_params[] = [
-                    'title' => 'Accepted',
+                    'title' => 'Won',
                     'url' => self::GetFilterUrl($url, $params, 'accepted', 0)
                 ];
             }
             if ($kay == 'rejected') {
                 $new_params[] = [
-                    'title' => 'Rejected',
+                    'title' => 'Canceled',
                     'url' => self::GetFilterUrl($url, $params, 'rejected', 0)
                 ];
             }

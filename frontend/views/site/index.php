@@ -146,13 +146,13 @@ $this->title = 'Grant Thornton';
                 <input type="checkbox" <?= !empty($get['accepted']) ? 'checked' : '' ?> name="accepted"
                        id="Accepted">
                 <strong class="bullet p-rel brd-rad-4"></strong>
-                <span class="font-w-300">Accepted</span>
+                <span class="font-w-300">Won</span>
             </label>
             <label for="Rejected">
                 <input type="checkbox" <?= !empty($get['rejected']) ? 'checked' : '' ?> name="rejected"
                        id="Rejected">
                 <strong class="bullet p-rel brd-rad-4"></strong>
-                <span class="font-w-300">Dismissed</span>
+                <span class="font-w-300">Canceled</span>
             </label>
             <label for="Closed">
                 <input type="checkbox" <?= !empty($get['closed']) ? 'checked' : '' ?> name="closed"
@@ -417,7 +417,6 @@ $this->title = 'Grant Thornton';
             <div class="list-data">
                 <span>Total No. of staff-months of the assignment</span>
                 <input id="id_staff_months"
-                       type="number"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
@@ -427,27 +426,27 @@ $this->title = 'Grant Thornton';
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
-                <span>Start date (month/year)</span>
+                <span>Start date (year/month)</span>
                 <select id="id_start_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
-                    <?php foreach (Helper::GetMonthAndYear(1995, 2020) as $kay => $d): ?>
+                    <?php foreach (Helper::GetMonthAndYear(2016, 2020) as $kay => $d): ?>
                         <option value="<?= $d ?>"><?= $d ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="list-data">
-                <span>Completion date (month/year)</span>
+                <span>Completion date (year/month)</span>
                 <select id="id_completion_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
-                    <?php foreach (Helper::GetMonthAndYear(1995, 2020) as $kay => $d): ?>
+                    <?php foreach (Helper::GetMonthAndYear(2016, 2020) as $kay => $d): ?>
                         <option value="<?= $d ?>"><?= $d ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="list-data">
-                <span>Name of senior professional staff of your firm involved and functions performed(indicate most significant profiles such as ProjectDirector/Coordinator,Team Leader)</span>
+                <span>Name of senior professional staff of your firm involved and functions performed (indicate most significant profiles such as Project Director / Coordinator, Team Leader)</span>
                 <input id="id_name_senior_professional"
                        type="text"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
@@ -455,38 +454,33 @@ $this->title = 'Grant Thornton';
             <div class="list-data">
                 <span>Proportion carried out by the firm, %</span>
                 <input id="id_proportion"
-                       type="number"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
                 <span>No. of professional staff- months provided by associated consultants</span>
                 <input id="id_no_professional_staff"
-                       type="number"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
                 <span>No of staff provided by the firm</span>
                 <input id="id_no_provided_staff"
-                       type="number"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
             </div>
             <div class="list-data">
                 <span>Narrative description of project</span>
                 <textarea id="id_narrative_description"
                           type="text"
-                          class="d-block font-w-300 brd-rad-4 w-100-perc">
-                </textarea>
+                          class="d-block font-w-300 brd-rad-4 w-100-perc"></textarea>
             </div>
             <div class="list-data">
                 <span>Description of actual services provided by your staff within the assignment</span>
                 <textarea id="id_actual_services_description"
                           type="text"
-                          class="d-block font-w-300 brd-rad-4 w-100-perc">
-                     </textarea>
+                          class="d-block font-w-300 brd-rad-4 w-100-perc"></textarea>
             </div>
 
             <div class="post-responsible-people font-15 font-w-700">
-                <span class="d-block">Role on the Assignment</span>
+                <span class="d-block">Select role</span>
                 <select id="id_assignment_id"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
