@@ -64,14 +64,14 @@ $(document).ready(function () {
         commentInterval = setInterval(function () {
             // GetComments(data)
         }, 5000)
-        console.log(data.id);
+        //console.log(data.id);
 
         $.ajax({
             type: "POST",
             url: "/ajax/get-project-data-by-id",
             data: data,
             success: function (project_data) {
-                console.log(project_data);
+                //console.log(project_data);
                 if (project_data) {
                     f_project_data = true;
                     d_project_data = project_data;
@@ -167,7 +167,7 @@ $(document).ready(function () {
 });
 
 function GetProjectMembersListByProjectId(id) {
-    console.log('GetProjectMembersListByProjectId')
+    //console.log('GetProjectMembersListByProjectId')
     var data = {};
     data.id = id;
     $.ajax({
@@ -175,8 +175,8 @@ function GetProjectMembersListByProjectId(id) {
         url: "/ajax/get-members-not-project",
         data: data,
         success: function (members) {
-            console.log('GetProjectMembersListByProjectId outttt')
-            console.log(members)
+            //console.log('GetProjectMembersListByProjectId outttt')
+            //console.log(members)
             if (members) {
                 $('#id_members').html('<option value="0">Select a members</option>');
                 members.forEach(function (val) {
@@ -320,7 +320,7 @@ function GetChecklistsByProjectId(id) {
         url: "/ajax/get-checklists-by-project-id",
         data: data,
         success: function (res) {
-            console.log(res.permission)
+            //console.log(res.permission)
             if (res.res) {
                 $('#id_checklists_data').html('');
                 res.res.forEach(function (val, i) {

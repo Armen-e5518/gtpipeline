@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
 
     $('.filtering-popup').on('click', '#id_attach_file', function (e) {
-        console.log('Click')
+        //console.log('Click')
         $('#id_close_attach_file').show();
         $('#fileuploader').show();
         $('#id_attach_file').hide();

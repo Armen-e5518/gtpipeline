@@ -6,18 +6,18 @@ window.onload = function () {
     socket_flag = true;
 
     socket.onopen = function (event) {
-        console.log('connected')
+        // //console.log('connected')
     };
     socket.onclose = function (event) {
         if (event.wasClean) {
-            console.log('closed')
+            //console.log('closed')
         } else {
-            console.log('closed some')
+            //console.log('closed some')
         }
     };
 
     socket.onerror = function (event) {
-        console.log(event.message);
+        //console.log(event.message);
     };
 
 };

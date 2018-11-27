@@ -11,7 +11,7 @@ function UpdateProjectList() {
             if (res) {
                 $('#projects').html('').html(res);
                 $('#popup-project').removeClass('active-popup');
-                console.log('data table');
+                //console.log('data table');
                 // setTimeout(function () {
                 $('#projects-data-t').DataTable({
                     "bPaginate": false,

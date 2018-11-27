@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $('#popup-project .filtering-popup, #projects a').click(function (e) {
-        console.log('stop');
+        //console.log('stop');
 
         e.stopPropagation();
     });

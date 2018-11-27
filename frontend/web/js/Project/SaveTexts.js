@@ -9,19 +9,19 @@ $(document).ready(function () {
         url: "/ajax/get-all-users",
         success: function (users) {
             if (users) {
-                console.log('Users',users);
+                //console.log('Users',users);
                 $.ajax({
                     type: "POST",
                     url: "/ajax/get-all-users-groups",
                     success: function (groups) {
                         if (groups) {
                             Users = users.concat(groups);
-                            console.log('Users',Users)
+                            //console.log('Users',Users)
                         }
                     }
                 });
             }else {
-                console.log('Artt')
+                //console.log('Artt')
             }
         }
     });
@@ -62,7 +62,7 @@ $(document).ready(function () {
             data: data,
             success: function (res) {
                 if (res) {
-                    console.log(Users_teg)
+                    //console.log(Users_teg)
                     Users_teg.forEach(function (val) {
                         AddNewNotificationInUser(val, data.project_id, 0, socket)
                     });
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     var tag_flag = false;
     $('#id_comment').keyup(function (e) {
-        // console.log(e);
+        // //console.log(e);
         if (e.keyCode == 32) {
             tag_flag = false;
             $('#id_users_tag').hide();
@@ -156,7 +156,7 @@ function GetUsersByString(Users, string) {
 
 function ChangeCommentTextByTag(Users, string) {
     Users_teg = [];
-    console.log(Users);
+    //console.log(Users);
     // return string.replace(new RegExp("@([a-zA-Z0-9_-]*)", "g"), '[~$1]');
     return string.replace(new RegExp("@[a-zA-Z0-9,_.-]*", "g"), function (val, i) {
         var username = val.substr(1);
@@ -174,8 +174,8 @@ function ChangeCommentTextByTag(Users, string) {
 
 // ChangeCommentTextByTagHtml('sad as d [~gago] sadfsaf asdsa [~grantuser]')
 function ChangeCommentTextByTagHtml(string) {
-    console.log('---------ChangeCommentTextByTagHtml')
-    console.log(string)
+    //console.log('---------ChangeCommentTextByTagHtml')
+    //console.log(string)
     return string.replace(/\[~([^\]]+)\]/g, function (val) {
         var username = val.slice(2, -1);
         return '<strong title="' + GetUserNameDataByUsername(Users, username) + '"  class="font-w-700">@' + username + '</strong>';

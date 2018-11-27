@@ -1,5 +1,5 @@
 function GetProjectHtmlByProjectId(roul) {
-    console.log('User-', roul);
+    //console.log('User-', roul);
     if (roul == 'creator') {
         GetTitleEdit(true);
         GetDecisionMakersEdit(true);
@@ -51,7 +51,7 @@ function GetDecisionMakersEdit(OpenFlag) {
             '<option value="0">Select a members</option>' +
             '</select> '
         );
-        console.log('GetDecisionMakersEdit select2');
+        //console.log('GetDecisionMakersEdit select2');
 
         setTimeout(function () {
             $('#id_members').select2();
