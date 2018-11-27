@@ -220,6 +220,9 @@ class ProjectsController extends Controller
         $model = new Projects();
         $members = User::GetUsers();
         $countries = Countries::GetCountries();
+//        $model->load(Yii::$app->request->post());
+//        Helper::dd($model);
+//        die;
         if (
             $model->load(Yii::$app->request->post())
             && $model->save()
@@ -243,7 +246,6 @@ class ProjectsController extends Controller
             }
             if ($errors && UserNotifications::NewNotificationsByUsers(Yii::$app->request->post('members'), $model->id, 1)) {
                 Mail::SandMailAllUsers($model->id);
-                die;
                 return $this->redirect(['site/projects']);
             }
         }

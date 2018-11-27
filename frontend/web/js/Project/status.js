@@ -12,7 +12,7 @@ $(document).ready(function () {
                 if (res) {
                     var Status = GetStatusTile(data.status);
                     ApproveStatus()
-                    $('#id_status_title').html(Status.title).removeClass('in-progress applied pending').addClass(Status.class);
+                    $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
                 }
             }
         });
@@ -21,6 +21,7 @@ $(document).ready(function () {
         $('#id_pop_submitted').show();
     });
     $('.filtering-popup').on('click', '#id_save_submitted', function () {
+        $('#id_checklist_buttons .load').show();
         var data = {};
         data.project_id = $('#id_project').attr('data-id');
         data.name_firm = $('#id_name_firm').val();
@@ -45,11 +46,12 @@ $(document).ready(function () {
                         url: "/ajax/save-change-status",
                         data: data,
                         success: function (res) {
+                            $('#id_checklist_buttons .load').hide();
                             if (res) {
                                 $('#id_pop_submitted').hide();
                                 var Status = GetStatusTile(data.status);
                                 SubmitStatus();
-                                $('#id_status_title').html(Status.title).removeClass('in-progress applied pending').addClass(Status.class);
+                                $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
                             }
                         }
                     });
@@ -64,6 +66,7 @@ $(document).ready(function () {
     });
 
     $('.filtering-popup').on('click', '#id_save_accepted', function () {
+        $('#id_checklist_buttons .load').show();
         var data = {};
         data.project_id = $('#id_project').attr('data-id');
         data.address_client = $('#id_address_client').val();
@@ -93,11 +96,12 @@ $(document).ready(function () {
                         url: "/ajax/save-change-status",
                         data: data,
                         success: function (res) {
+                            $('#id_checklist_buttons .load').hide();
                             if (res) {
                                 $('#id_pop_accepted').hide();
                                 var Status = GetStatusTile(data.status);
                                 HideButtons()
-                                $('#id_status_title').html(Status.title).removeClass('in-progress applied pending').addClass(Status.class);
+                                $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
                             }
                         }
                     });
@@ -118,7 +122,7 @@ $(document).ready(function () {
                 if (res) {
                     var Status = GetStatusTile(data.status);
                     HideButtons()
-                    $('#id_status_title').html(Status.title).removeClass('in-progress applied pending').addClass(Status.class);
+                    $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
                 }
             }
         });
@@ -136,7 +140,7 @@ $(document).ready(function () {
                 if (res) {
                     var Status = GetStatusTile(data.status);
                     HideButtons()
-                    $('#id_status_title').html(Status.title).removeClass('in-progress applied pending').addClass(Status.class);
+                    $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
                 }
             }
         });

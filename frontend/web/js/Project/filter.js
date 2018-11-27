@@ -7,8 +7,8 @@ $(document).ready(function () {
         }
     }
 
-    $("#id_deadline_from").datepicker({dateFormat: 'yy-mm-dd'});
-    $("#id_deadline_to").datepicker({dateFormat: 'yy-mm-dd'});
+    $("#id_deadline_from").datepicker({dateFormat: 'dd-mm-yy'});
+    $("#id_deadline_to").datepicker({dateFormat: 'dd-mm-yy'});
 
 
 });

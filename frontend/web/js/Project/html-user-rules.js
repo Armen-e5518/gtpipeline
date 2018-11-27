@@ -50,7 +50,15 @@ function GetDecisionMakersEdit(OpenFlag) {
             'class="change-status-type padding-5 transparent-bg  gray-txt font-15">' +
             '<option value="0">Select a members</option>' +
             '</select> '
-        )
+        );
+        console.log('GetDecisionMakersEdit select2');
+
+        setTimeout(function () {
+            $('#id_members').select2();
+            $('#id_decision_makers_edit .select2').addClass('m-hide');
+        },500)
+
+
     } else {
         $('#id_decision_makers_edit').html('')
     }
@@ -114,7 +122,7 @@ function GetStatusCEdit(OpenFlag, crater) {
             '<li>' +
             '<button style="display:none;"' +
             'id="id_reject"' +
-            'title="Reject project"' +
+            'title="Dismiss project"' +
             'class="txt-upper status-class transparent-bg red-border font-15 w-100-perc font-w-700">' +
             '<i class="fa fa-times"></i> Dismiss' +
             '</button>' +
@@ -124,13 +132,13 @@ function GetStatusCEdit(OpenFlag, crater) {
             'id="id_accepted"' +
             'title="Accepted project"' +
             'class="txt-upper status-class green-txt transparent-bg green-border font-18 w-100-perc font-w-700 padding-5">' +
-            '<i class="fa fa-check"></i> Accepted' +
+            '<i class="fa fa-check"></i> Wan' +
             '</button>' +
             '</li>' +
             '<li>' +
             '<button style="display:none;"' +
             'id="id_closed"' +
-            'title="Closed project"' +
+            'title="Rejected project"' +
             'class="txt-upper status-class transparent-bg red-border font-15 w-100-perc font-w-700">' +
             '<i class="fa fa-times"></i> Rejected' +
             '</button>' +

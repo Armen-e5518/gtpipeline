@@ -15,6 +15,9 @@ use kartik\file\FileInput;
 
     <div class="row">
         <div class="col-md-6">
+
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true,]); ?>
+
             <div class="add-countries">
                 <label class="control-label" for="documents-category">Category</label>
                 <?= \kartik\select2\Select2::widget([
@@ -22,9 +25,16 @@ use kartik\file\FileInput;
                     'name' => 'category',
                     'attribute' => 'category',
                     'data' => [
-                        'category 1' => 'category 1',
-                        'category 2' => 'category 2',
-                        'category 3' => 'category 3',
+                        'MF profiles' => 'MF profiles',
+                        'Credentials' => 'Credentials',
+                        'CVs' => 'CVs',
+                        'Methodologies' => 'Methodologies',
+                        'Expression of interests' => 'Expression of interests',
+                        'Proposals' => 'Proposals',
+                        'RFPs' => 'RFPs',
+                        'Templates' => 'Templates',
+                        'Certificates' => 'Certificates',
+                        'Other' => 'Other',
                     ],
                     'maintainOrder' => true,
                     'options' => ['placeholder' => 'Category ...', 'id' => 'add-category', 'multiple' => false],

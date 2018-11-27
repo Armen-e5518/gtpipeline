@@ -15,7 +15,6 @@ $(document).ready(function () {
         // $('#id_project').show();
     }, 500);
 
-
     $(document).on('click', '#projects .project, #notifications_list a', function () {
         var ob = $(this);
         var data = {};
@@ -168,6 +167,7 @@ $(document).ready(function () {
 });
 
 function GetProjectMembersListByProjectId(id) {
+    console.log('GetProjectMembersListByProjectId')
     var data = {};
     data.id = id;
     $.ajax({
@@ -175,6 +175,8 @@ function GetProjectMembersListByProjectId(id) {
         url: "/ajax/get-members-not-project",
         data: data,
         success: function (members) {
+            console.log('GetProjectMembersListByProjectId outttt')
+            console.log(members)
             if (members) {
                 $('#id_members').html('<option value="0">Select a members</option>');
                 members.forEach(function (val) {
@@ -183,6 +185,7 @@ function GetProjectMembersListByProjectId(id) {
                     )
                 })
             }
+            $('#id_members').select2();
         }
     });
 }
@@ -197,7 +200,7 @@ function SetProjectDataInHtml(d_params, d_project_data, d_members_data, d_attach
     $('#id_project_deadline').html(d_project_data.deadline);
     $('#id_project_created').html(d_project_data.request_issued);
     $('#id_project_members').html('');
-    $('#id_status_title').html(Status.title).removeClass('in-progress pending').addClass(Status.class);
+    $('#id_status_title').html(Status.title).attr('class','post-status font-w-700 txt-upper').addClass(Status.class);
 // -------info------
     if (d_project_data.tender_stage) {
         $('#id_tender_stage').show();
@@ -219,7 +222,7 @@ function SetProjectDataInHtml(d_params, d_project_data, d_members_data, d_attach
     }
     if (d_project_data.eligibility_restrictions) {
         $('#id_eligibility_restrictions').show();
-        $('#id_eligibility_restrictions').html(d_project_data.eligibility_restrictions);
+        $('#id_eligibility_restrictions span').html(d_project_data.eligibility_restrictions);
     } else {
         $('#id_eligibility_restrictions').hide();
     }
@@ -392,24 +395,24 @@ function GetStatusTile(id) {
             s_class = 'pending';
             break;
         case 1:
-            s = 'SUBMISSION PROCESS';
-            s_class = 'in-progress';
-            break;
-        case 2:
             s = 'In progress';
             s_class = 'in-progress';
             break;
+        case 2:
+            s = 'Submitted';
+            s_class = 'submitted';
+            break;
         case 3:
-            s = 'Accepted';
+            s = 'Won';
             s_class = 'applied';
             break;
         case 4:
-            s = 'Dismissed';
-            s_class = 'in-progress';
+            s = 'Cancelled';
+            s_class = 'cancelled';
             break;
         case 5:
             s = 'REJECTED';
-            s_class = 'in-progress';
+            s_class = 'rejected';
             break;
     }
     return {

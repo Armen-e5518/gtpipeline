@@ -5,6 +5,7 @@ $(document).ready(function () {
     $('.filtering-popup').on('click', '#id_add_members', function () {
         $(this).hide();
         $('#id_members').show();
+        $('#id_decision_makers_edit .select2').removeClass('m-hide');
     });
 
 
@@ -34,6 +35,7 @@ $(document).ready(function () {
                     );
                     $('#id_members option:selected').remove();
                     $('#id_members').hide();
+                    $('#id_decision_makers_edit .select2').addClass('m-hide');
                     $('#id_add_members').show();
                 }
             }

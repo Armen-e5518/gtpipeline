@@ -106,13 +106,13 @@ class Helper extends Component
             }
             if ($kay == 'rejected') {
                 $new_params[] = [
-                    'title' => 'Canceled',
+                    'title' => 'Cancelled',
                     'url' => self::GetFilterUrl($url, $params, 'rejected', 0)
                 ];
             }
             if ($kay == 'closed') {
                 $new_params[] = [
-                    'title' => 'Closed',
+                    'title' => 'Rejected',
                     'url' => self::GetFilterUrl($url, $params, 'closed', 0)
                 ];
             }
@@ -199,24 +199,24 @@ class Helper extends Component
                 $s_class = 'pending';
                 break;
             case 1:
-                $s = 'SUBMISSION PROCESS';
-                $s_class = 'in-progress';
-                break;
-            case 2:
                 $s = 'In progress';
                 $s_class = 'in-progress';
                 break;
+            case 2:
+                $s = 'Submitted';
+                $s_class = 'submitted';
+                break;
             case 3:
-                $s = 'Accepted';
+                $s = 'Won';
                 $s_class = 'applied';
                 break;
             case 4:
-                $s = 'Dismissed';
-                $s_class = 'in-progress';
+                $s = 'Cancelled';
+                $s_class = 'cancelled';
                 break;
             case 5:
                 $s = 'REJECTED';
-                $s_class = 'in-progress';
+                $s_class = 'rejected';
                 break;
         }
         return [
@@ -278,13 +278,13 @@ class Helper extends Component
     {
         if (!empty($string)) {
             $string = trim($string);
-            if($string{0} == '>'){
+            if ($string{0} == '>') {
                 return [
                     'kay' => '>',
                     'val' => substr($string, 1),
                 ];
             }
-            if($string{0} == '<'){
+            if ($string{0} == '<') {
                 return [
                     'kay' => '<',
                     'val' => substr($string, 1),
@@ -292,5 +292,15 @@ class Helper extends Component
             }
         }
         return false;
+    }
+
+    public static function GetDate($date)
+    {
+       return date("d-m-Y", strtotime($date));
+    }
+    public static function GetDateFoSql($date)
+    {
+        return date("Y-m-d", strtotime($date));
+
     }
 }

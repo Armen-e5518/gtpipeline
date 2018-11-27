@@ -41,8 +41,8 @@ use yii\widgets\ActiveForm;
                     'data' => $rules,
                     'maintainOrder' => true,
                     'options' => [
-                        'title' => 'Select user rule...',
-                        'placeholder' => 'Select user rule...',
+                        'title' => 'Select user role...',
+                        'placeholder' => 'Select user role...',
                     ],
                     'pluginOptions' => [
                         'tags' => true,

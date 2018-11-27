@@ -14,7 +14,7 @@
         <?php if (Yii::$app->rule_check->CheckByKay(['super_admin'])): ?>
             <li><a href="/users-group"
                    class="d-block <?= $active == 'user-groups' ? 'active' : '' ?> members no-underline white-txt"><i
-                            class="fa fa-users"></i>User Groups</a>
+                            class="fa fa-users"></i>User groups</a>
             </li>
         <?php endif; ?>
         <?php if (Yii::$app->rule_check->CheckByKay(['super_admin'])): ?>

@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use frontend\components\Helper;
 use yii\helpers\Url;
@@ -54,14 +55,14 @@ $this->title = 'Grant Thornton';
                     <i id="show-left-slide" class="fa fa-bars"></i>
                     <i id="show-right-slide" style="display: none" class="fa fa-arrow-circle-right brd-rad-4"></i>
                     <div class="breadcrumb font-14 font-w-300">
-                        <a href="#" class="no-underline">Pipeline Management System</a>
+                        <a href="#" class="no-underline">Pipeline management system</a>
                         <i class="fa fa-angle-right"></i>
                         <a href="#" class="no-underline">Prospects</a>
                     </div>
                     <div class="selected-filters font-13 font-w-300">
                         <ul>
                             <li class="brd-rad-4">
-                                <a class="no-underline" href="/?show=all">Show All</a>
+                                <a class="no-underline" href="/?show=all">Show all</a>
                             </li>
                             <?php if (!empty($params)): ?>
                                 <?php foreach ($params as $kay => $param): $url = (count($param['url']) == 1) ? ['/site/index', 'show' => 'all'] : $param['url'] ?>
@@ -152,7 +153,7 @@ $this->title = 'Grant Thornton';
                 <input type="checkbox" <?= !empty($get['rejected']) ? 'checked' : '' ?> name="rejected"
                        id="Rejected">
                 <strong class="bullet p-rel brd-rad-4"></strong>
-                <span class="font-w-300">Canceled</span>
+                <span class="font-w-300">Cancelled</span>
             </label>
             <label for="Closed">
                 <input type="checkbox" <?= !empty($get['closed']) ? 'checked' : '' ?> name="closed"
@@ -236,19 +237,19 @@ $this->title = 'Grant Thornton';
                         <span class="d-block description-txt"></span>
                     </div>
                     <div class="txt-without-icon" id="id_eligibility_restrictions">
-                        Eligibility Restrictions:
+                        Eligibility restrictions:
                         <span class="d-block description-txt"></span>
                     </div>
                     <div class="txt-without-icon" id="id_selection_method">
-                        Selection Method:
+                        Selection method:
                         <span class="d-block description-txt"></span>
                     </div>
                     <div class="txt-without-icon" id="id_evaluation_decision_making">
-                        Evaluation Decision Making:
+                        Evaluation secision making:
                         <span class="d-block description-txt"></span>
                     </div>
                     <div class="txt-without-icon" id="id_beneficiary_stakeholder">
-                        Beneficiary Stakeholder:
+                        Beneficiary stakeholder:
                         <span class="d-block description-txt"></span>
                     </div>
                 </div>
@@ -315,7 +316,7 @@ $this->title = 'Grant Thornton';
                         </span>
                     </li>
                 </ul>
-                <h6 class="font-w-700 font-16">Project Status</h6>
+                <h6 class="font-w-700 font-16">Project status</h6>
                 <ul>
                     <li>
                         <div id="id_status_title" title="Project status"
@@ -390,11 +391,12 @@ $this->title = 'Grant Thornton';
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="list-data" id="id_checklist_buttons">
+            <div class="list-data" id="id_checklist_buttons" align="center">
                 <button title="Save" id="id_save_submitted"
                         class="red-border d-block font-15 white-bg font-w-700">
                     Save
                 </button>
+                <span style="width: 40px;display: none" class="load fa fa-spinner fa-spin"></span>
             </div>
         </div>
         <!--        ***********************-->
@@ -403,7 +405,7 @@ $this->title = 'Grant Thornton';
              class="subpopup filtering-popup card-detail-popup brd-rad-4 p-rel">
             <i class="popup-close p-abs" title="Close"></i>
             <div class="list-data">
-                <span>Address of Client</span>
+                <span>Address of client</span>
                 <input id="id_address_client"
                        type="text"
                        class="d-block font-w-300 brd-rad-4 w-100-perc">
@@ -430,7 +432,7 @@ $this->title = 'Grant Thornton';
                 <select id="id_start_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
-                    <?php foreach (Helper::GetMonthAndYear(2016, 2020) as $kay => $d): ?>
+                    <?php foreach (Helper::GetMonthAndYear(2018, 2020) as $kay => $d): ?>
                         <option value="<?= $d ?>"><?= $d ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -440,7 +442,7 @@ $this->title = 'Grant Thornton';
                 <select id="id_completion_date"
                         title="Select a member"
                         class="change-status-type padding-5 transparent-bg  gray-txt font-15">
-                    <?php foreach (Helper::GetMonthAndYear(2016, 2020) as $kay => $d): ?>
+                    <?php foreach (Helper::GetMonthAndYear(2018, 2020) as $kay => $d): ?>
                         <option value="<?= $d ?>"><?= $d ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -490,11 +492,12 @@ $this->title = 'Grant Thornton';
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="list-data" id="id_checklist_buttons">
+            <div class="list-data" id="id_checklist_buttons" align="center">
                 <button title="Save" id="id_save_accepted"
                         class="red-border d-block font-15 white-bg font-w-700">
                     Save
                 </button>
+                <span style="width: 40px;display: none" class="load fa fa-spinner fa-spin"></span>
             </div>
         </div>
         <!--        ***********************-->

@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="btn-right">
 
                     <?= Html::a('Upload new file', ['create'], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Reset filter', ['index'], ['class' => 'btn btn-primary']) ?>
                 </div>
             </div>
             <div>
@@ -40,11 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-//                        'id',
+                        'title',
                         ['attribute' => 'url',
                             'format' => 'html',
                             'value' => function ($model) {
-                                return Html::a( '<i class="fa fa-cloud-download" aria-hidden="true"></i> ' . $model->url , ['/documents/' . $model->url ], ['target' => '_blank']);
+                                return Html::a('<i class="fa fa-cloud-download" aria-hidden="true"></i> ' . $model->url, ['/documents/' . $model->url], ['target' => '_blank']);
                             },
                         ],
                         [
@@ -65,12 +66,29 @@ $this->params['breadcrumbs'][] = $this->title;
                                     case   'xls':
                                         return '<span class="fa fa-file-excel-o"></span> (XLS)';
                                     default:
-                                        return '<span class="fa fa-file"></span> ';
+                                        return '<span class="fa fa-file"></span> (' . strtoupper($model->type) . ') ';
                                 }
                             },
                         ],
                         'category',
                         'date',
+                        [
+                            'attribute' => 'user_id',
+                            'label' => 'Uploaded by',
+                            'format' => 'html',
+                            'value' => function ($model) {
+                               $user = \frontend\models\User::GetUserById($model->user_id);
+                               return $user['firstname'].' '.$user['lastname'];
+                            },
+                            'filter' => \kartik\select2\Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'user_id',
+                                'data' => \frontend\models\User::GetSuperUsers(),
+                                'options' => [
+                                    'placeholder' => 'Uploaded by...',
+                                ]
+                            ]),
+                        ],
                         // 'user_id',
 
                         [

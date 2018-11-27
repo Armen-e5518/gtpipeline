@@ -72,7 +72,7 @@ class User extends \yii\db\ActiveRecord
 
             [['imageFile'], 'file', 'extensions' => 'png, jpg'],
             [['lastname', 'firstname', 'email'], 'required'],
-            [['status', 'created_at', 'updated_at', 'company_id', 'group_id', 'country_id','ebrd'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'company_id', 'group_id', 'country_id', 'ebrd'], 'integer'],
             [['lastname', 'firstname', 'password_reset_token', 'email', 'image_url'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['password_reset_token'], 'unique'],
@@ -168,6 +168,11 @@ class User extends \yii\db\ActiveRecord
     public static function GetUsers()
     {
         return self::find()->select(["CONCAT(`firstname`,' ',`lastname`) as name", 'id'])->indexBy('id')->column();
+    }
+
+    public static function GetSuperUsers()
+    {
+        return self::find()->select(["CONCAT(`firstname`,' ',`lastname`) as name", 'id'])->indexBy('id')->where(['id' => 1])->column();
     }
 
     public static function GetAllUsersNotProject($project_id)

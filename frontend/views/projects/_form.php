@@ -41,7 +41,7 @@ use kartik\file\FileInput;
                 'options2' => ['placeholder' => 'Deadline'],
                 'pluginOptions' => [
                     'autoclose' => true,
-                    'format' => 'yyyy-mm-dd',
+                    'format' => 'dd-mm-yyyy',
                     'todayBtn' => true,
                     'todayHighlight' => true
                 ]

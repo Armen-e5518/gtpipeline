@@ -1105,7 +1105,15 @@ div#id_checklist_buttons button {
 								.post-status.in-progress {
 									color:#512178;
 								}
-
+								.post-status.rejected {
+									color:#de012f;
+								}
+								.post-status.cancelled {
+									color:#c8beaf;
+								}
+								.post-status.submitted {
+									color:#ff7d1e;
+								}
 									.post-status i {
 										margin-right:6px;
 									}

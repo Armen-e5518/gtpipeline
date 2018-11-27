@@ -248,7 +248,7 @@ div#id_checklist_buttons button {
 }
 
 .project-info span {
-    font-style: italic;
+    /*font-style: italic;*/
 }
 
 .attach-file-block {
@@ -322,4 +322,29 @@ div#id_checklist_buttons button {
 
 .datepicker table tr td.old, .datepicker table tr td.new {
     color: #bbbbbb !important;
+}
+
+#projects-data-t tbody td {
+    text-align: left !important;
+}
+
+.select2-container--krajee .select2-results__option[aria-selected] {
+    font-size: 12px;
+}
+
+#id_project .txt-without-icon {
+    font-weight: 800;
+}
+
+#id_project .txt-without-icon span {
+    font-weight: 400 !important;
+}
+
+label .bullet {
+    background: #ffffff;
+    border: 1px solid #7a7a7a;
+}
+
+.m-hide {
+    display: none;
 }

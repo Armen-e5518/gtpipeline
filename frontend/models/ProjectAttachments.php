@@ -41,7 +41,7 @@ class ProjectAttachments extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'project_id' => 'Project ID',
+            'project_id' => 'Project ',
             'src' => 'Src',
             'type' => 'Type',
         ];

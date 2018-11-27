@@ -54,7 +54,7 @@ class Mail extends Component
                         'html' => 'new-project-join',
                         'text' => 'new-project-join'
                     ], ['project' => $project])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GT Pipeline'])
                     ->setTo($user['email'])
                     ->setSubject('Project assigned '.$project->project_code)
                     ->send();
@@ -78,7 +78,7 @@ class Mail extends Component
                         'project' => $project,
                         'countries' => $countries
                     ])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => 'GT Pipeline'])
                     ->setTo($user['email'])
                     ->setSubject('New project ' . $project->project_code . ' ' .$countries)
                     ->send();
@@ -93,7 +93,7 @@ class Mail extends Component
         return \Yii::$app
             ->mailer
             ->compose()
-            ->setFrom([\Yii::$app->params['supportEmail'] => 'GrantThornton'])
+            ->setFrom([\Yii::$app->params['supportEmail'] => 'GT Pipeline'])
             ->setTo($email)
             ->setSubject($title)
             ->setTextBody($text)

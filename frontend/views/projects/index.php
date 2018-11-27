@@ -80,12 +80,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                 ];
 
                 $gridColumns = [
-                    [
-                        'attribute' => '#',
-                        'content' => function ($model, $key, $index, $column) {
-                            return (int)($index + 1);
-                        }
-                    ],
+                    ['class' => 'yii\grid\SerialColumn'],
                     'project_code',
                     'name_firm',         //Firm name
                     'client_name',
@@ -163,6 +158,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
 //                    'lead_partner',
 //                    'partner_contact',
 
+
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'header' => 'Actions',
@@ -170,9 +166,9 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                         'template' => $template,
                         'buttons' => [
                             'view' => function ($url, $model) {
-                                return Html::a('<i class="fa fa-file-word-o" aria-hidden="true"></i>', $url, [
+                                return ($model->status == 3) ? Html::a('<i class="fa fa-file-word-o" aria-hidden="true"></i>', $url, [
                                     'title' => Yii::t('app', 'Download word'),
-                                ]);
+                                ]) : false;
                             },
 
                             'update' => function ($url, $model) {
@@ -201,13 +197,13 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                         ]
 
                 ]);
-//                \yii\widgets\Pjax::begin(['id' => 'medicine']);
+                //                \yii\widgets\Pjax::begin(['id' => 'medicine']);
                 echo \kartik\grid\GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => $gridColumns,
                 ]);
-//                \yii\widgets\Pjax::end();
+                //                \yii\widgets\Pjax::end();
                 ?>
             </div>
         </div>

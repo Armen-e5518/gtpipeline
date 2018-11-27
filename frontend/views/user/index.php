@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]),
                         ],
                         [
-                            'attribute' => 'Countries',
+                            'attribute' => 'Country',
                             'format' => 'html',
                             'value' => function ($data) {
                                 $s = '<ul>';
@@ -95,8 +95,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]
                             ]),
                         ],
+//                        'Propasal','Eol','General procurement notice','Early intelligence'
                         [
-                            'attribute' => 'Companies',
+                            'attribute' => 'Firm',
                             'format' => 'html',
                             'value' => function ($data) {
                                 $company = $data->GetCompany(($data->company_id));

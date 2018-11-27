@@ -46,7 +46,7 @@ $status = \frontend\components\Helper::GetStatusTitle($project['status']);
         <p title="Tender stage"><?= $project['tender_stage'] ?></p>
     </td>
     <td>
-        <p title="Deadline"><?= $project['deadline'] ?></p>
+        <p title="Deadline"><?=\frontend\components\Helper::GetDate( $project['deadline']) ?></p>
     </td>
     <td>
         <div class="post-actions d-flex brd-rad-4 white-bg">
