@@ -17,10 +17,10 @@ $this->registerJsFile('/main/assets/js/custom.js');
 
 $this->title = 'Documents';
 $this->params['breadcrumbs'][] = $this->title;
-
+//document
 ?>
 <div class="container-fluid d-flex my-content">
-    <?= $this->render('/common/left-menu', ['active' => 'documents']) ?>
+    <?= $this->render('/common/left-menu', ['active' => 'document']) ?>
     <div class="wrapper">
         <?= $this->render('/common/top-bar') ?>
         <div class="main m-members">
@@ -41,12 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'title',
-                        ['attribute' => 'url',
-                            'format' => 'html',
+//                        'title',
+                        ['attribute' => 'title',
+                            'format' => 'raw',
                             'value' => function ($model) {
-                                return Html::a('<i class="fa fa-cloud-download" aria-hidden="true"></i> ' . $model->url, ['/documents/' . $model->url], ['target' => '_blank']);
+                                return Html::a('<i class="fa fa-cloud-download" aria-hidden="true"></i> ' . $model->title, ['/documents/' . $model->url], ['target' => '_blank']);
                             },
+                            'contentOptions'=>['style'=>'width: 30%;']
                         ],
                         [
                             'attribute' => 'type',

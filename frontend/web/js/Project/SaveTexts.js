@@ -20,7 +20,7 @@ $(document).ready(function () {
                         }
                     }
                 });
-            }else {
+            } else {
                 //console.log('Artt')
             }
         }
@@ -146,8 +146,9 @@ function SetUsers(Users) {
 
 function GetUsersByString(Users, string) {
     var New_list = [];
+    string = string.toLowerCase();
     Users.forEach(function (val, i) {
-        if ((val.username.indexOf(string) > -1 || val.firstname.indexOf(string) > -1 || val.lastname.indexOf(string) > -1)) {
+        if ((val.username.toLowerCase().indexOf(string) > -1 || val.firstname.toLowerCase().indexOf(string) > -1 || val.lastname.toLowerCase().indexOf(string) > -1)) {
             New_list.push(val)
         }
     });

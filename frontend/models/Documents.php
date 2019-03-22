@@ -42,7 +42,7 @@ class Documents extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['date'], 'safe'],
             [['url', 'category'], 'string', 'max' => 255],
-            [['type','title'], 'string', 'max' => 10],
+            [['type','title'], 'string', 'max' => 255],
         ];
     }
 

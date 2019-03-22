@@ -130,9 +130,9 @@ function GetStatusCEdit(OpenFlag, crater) {
             '<li>' +
             '<button style="display:none;"' +
             'id="id_accepted"' +
-            'title="Accepted project"' +
+            'title="Won project"' +
             'class="txt-upper status-class green-txt transparent-bg green-border font-18 w-100-perc font-w-700 padding-5">' +
-            '<i class="fa fa-check"></i> Wan' +
+            '<i class="fa fa-check"></i> Won' +
             '</button>' +
             '</li>' +
             '<li>' +
