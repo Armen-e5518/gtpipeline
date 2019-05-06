@@ -118,6 +118,7 @@ class SiteController extends Controller
             'users' => User::GetUsers(),
             'get' => $get,
             '$projects' => $projects,
+            'model' => new Projects(),
         ]);
     }
 

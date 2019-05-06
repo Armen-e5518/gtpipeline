@@ -32,10 +32,15 @@
                    class="d-block  <?= $active == 'document' ? 'active' : '' ?> countries no-underline white-txt"><i
                             class="fa  fa-file-text-o"></i>Documents</a>
             </li>
+           <li><a href="/project-sectors"
+                  class="d-block  <?= $active == 'project-sectors' ? 'active' : '' ?> countries no-underline white-txt"><i
+                     class="fa  fa-file-text-o"></i>Project sectors</a>
+           </li>
         <?php endif; ?>
+
     </ul>
     <?php if (Yii::$app->rule_check->CheckByKay(['super_admin']) || Yii::$app->rule_check->CheckByKay(['moderator'])): ?>
-        <a href="/projects/create" class="add-new-block  no-underline white-txt"><i></i>Add new prospect</a>
+        <a href="/projects/create" class="add-new-block  no-underline white-txt"><i></i>Add new project</a>
     <?php endif; ?>
     <div class="creator-info p-abs">
         <div class="company-info">© 2018 E-WORKS LLC</div>

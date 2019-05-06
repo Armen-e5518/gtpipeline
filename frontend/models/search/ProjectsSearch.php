@@ -23,7 +23,7 @@ class ProjectsSearch extends Projects
     public function rules()
     {
         return [
-            [['id', 'status', 'state'], 'integer'],
+            [['id', 'status', 'state','service_line','project_components','country'], 'integer'],
             [
                 [
                     'ifi_name',
@@ -52,6 +52,10 @@ class ProjectsSearch extends Projects
                     'service_id',
                     'project_code',
                     'budget_int',
+                    'services_value',
+                    'project_sectors',
+                    'financed_by',
+
                 ],
                 'safe'
             ],
@@ -81,9 +85,6 @@ class ProjectsSearch extends Projects
             ->leftJoin(Industrys::tableName() . ' i', 'i.id = p.industry_id')
             ->leftJoin(Services::tableName() . ' s', 's.id = p.service_id');
 
-
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -94,6 +95,7 @@ class ProjectsSearch extends Projects
                 'client_name',
                 'project_name',
                 'location_within_country',
+                'country',
                 'budget',
                 'product_price',
                 'project_value',
@@ -104,25 +106,24 @@ class ProjectsSearch extends Projects
                 'industry_id',
                 'service_id',
                 'project_code',
+                'service_line',
+                'financed_by',
             ],
             'defaultOrder' => [
                 'name_firm' => SORT_DESC,
             ]
         ]);
         $this->load($params);
-        if ($this->location_within_country) {
+        if ($this->country) {
             $query->leftJoin(ProjectCountries::tableName() . ' pc', 'p.id = pc.project_id')
                 ->leftJoin(Countries::tableName() . ' c', 'c.id = pc.country_id')
-                ->andWhere(['c.id' => $this->location_within_country])
+                ->andWhere(['c.id' => $this->country])
                 ->groupBy('p.id');
         }
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
@@ -130,9 +131,9 @@ class ProjectsSearch extends Projects
             'name_firm' => $this->name_firm,
             'partner_contact' => $this->partner_contact,
             'lead_partner' => $this->lead_partner,
-            'consultants' => $this->consultants,
-//            'location_within_country' => $this->location_within_country,
+            'service_line' => $this->service_line,
             'project_value' => $this->project_value,
+            'project_components' => $this->project_components,
 
         ]);
 
@@ -143,20 +144,21 @@ class ProjectsSearch extends Projects
             } else {
                 $query->andFilterWhere(['like', 'p.budget', $this->budget]);
             }
-
         }
         $query
             ->andFilterWhere(['like', 'p.project_code', $this->project_code])
             ->andFilterWhere(['like', 'p.ifi_name', $this->ifi_name])
+            ->andFilterWhere(['like', 'p.project_sectors', $this->project_sectors])
             ->andFilterWhere(['like', 'p.name_firm', $this->name_firm])
+            ->andFilterWhere(['like', 'p.services_value', $this->services_value])
             ->andFilterWhere(['like', 'i.id', $this->industry_id])
             ->andFilterWhere(['like', 's.id', $this->service_id])
             ->andFilterWhere(['like', 'p.client_name', $this->client_name])
             ->andFilterWhere(['like', 'p.partner_contact', $this->partner_contact])
             ->andFilterWhere(['like', 'p.lead_partner', $this->lead_partner])
             ->andFilterWhere(['like', 'p.consultants', $this->consultants])
+            ->andFilterWhere(['like', 'p.financed_by', $this->financed_by])
             ->andFilterWhere(['like', 'p.project_value', $this->project_value])
-//            ->andFilterWhere(['like', 'p.location_within_country', $this->location_within_country])
             ->andFilterWhere(['like', 'p.project_name', $this->project_name])
             ->andFilterWhere(['like', 'p.project_dec', $this->project_dec])
             ->andFilterWhere(['like', 'p.tender_stage', $this->tender_stage])
@@ -167,6 +169,7 @@ class ProjectsSearch extends Projects
             ->andFilterWhere(['like', 'p.selection_method', $this->selection_method])
             ->andFilterWhere(['like', 'p.submission_method', $this->submission_method])
             ->andFilterWhere(['like', 'p.evaluation_decision_making', $this->evaluation_decision_making])
+            ->andFilterWhere(['like', 'p.location_within_country', $this->location_within_country])
             ->andFilterWhere(['like', 'p.beneficiary_stakeholder', $this->beneficiary_stakeholder]);
 
         return $dataProvider;

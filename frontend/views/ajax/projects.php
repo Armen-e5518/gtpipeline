@@ -17,9 +17,10 @@ $index = 1;
             <th>Status</th>
             <th>Contracting authority</th>
             <th>Client name</th>
-            <th>Title of notice</th>
+            <th>Project name</th>
             <th>Country</th>
             <th>Tender stage</th>
+            <th>Moderator</th>
             <th><i class="fa fa-clock-o"></i> Deadline</th>
             <th></th>
         </tr>

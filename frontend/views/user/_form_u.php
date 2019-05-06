@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $user_rules
-/* @var $select_countries
+ * /* @var $select_countries
  * /* @var $countries
  * /* @var $companies
  * /* @var $select_countries
@@ -13,10 +13,10 @@ use yii\widgets\ActiveForm;
  * /* @var $model frontend\models\User
  */
 /* @var $form yii\widgets\ActiveForm */
-
+$model->password_hash = null;
 ?>
 <style>
-    #user-ebrd{
+    #user-ebrd {
         display: inherit;
     }
 </style>
@@ -29,11 +29,12 @@ use yii\widgets\ActiveForm;
     ]); ?>
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'firstname')->textInput(['maxlength' => true,'title' => $model->getAttributeLabel('firstname'), 'placeholder' => $model->getAttributeLabel('firstname')])->label(false) ?>
-            <?= $form->field($model, 'lastname')->textInput(['maxlength' => true,'title' => $model->getAttributeLabel('lastname'), 'placeholder' => $model->getAttributeLabel('lastname')])->label(false) ?>
-            <?= $form->field($model, 'username')->textInput(['maxlength' => true,'disabled' => 'disabled', 'title' => $model->getAttributeLabel('username'), 'placeholder' => $model->getAttributeLabel('username')])->label(false) ?>
-            <?= $form->field($model, 'email')->textInput(['maxlength' => true,'title' => $model->getAttributeLabel('email'), 'placeholder' => $model->getAttributeLabel('email')])->label(false) ?>
-            <?= $form->field($model, 'status')->dropDownList(['10' => 'Active', '0' => 'Inactive'],['title' => $model->getAttributeLabel('status')])->label(false); ?>
+            <?= $form->field($model, 'firstname')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('firstname'), 'placeholder' => $model->getAttributeLabel('firstname')])->label(false) ?>
+            <?= $form->field($model, 'lastname')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('lastname'), 'placeholder' => $model->getAttributeLabel('lastname')])->label(false) ?>
+            <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'disabled' => 'disabled', 'title' => $model->getAttributeLabel('username'), 'placeholder' => $model->getAttributeLabel('username')])->label(false) ?>
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'title' => $model->getAttributeLabel('email'), 'placeholder' => $model->getAttributeLabel('email')])->label(false) ?>
+            <?= $form->field($model, 'status')->dropDownList(['10' => 'Active', '0' => 'Inactive'], ['title' => $model->getAttributeLabel('status')])->label(false); ?>
+            <?= $form->field($model, 'status')->dropDownList(['10' => 'Active', '0' => 'Inactive'], ['title' => $model->getAttributeLabel('status')])->label(false); ?>
             <div class="add-rules">
                 <?= \kartik\select2\Select2::widget([
                     'name' => 'rules',
@@ -50,6 +51,7 @@ use yii\widgets\ActiveForm;
                 ]);
                 ?>
             </div>
+            <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true, 'title' => $model->getAttributeLabel('password_hash'), 'placeholder' => $model->getAttributeLabel('password_hash')])->label(false) ?>
         </div>
         <div class="col-md-6">
             <?php if (!empty($model->image_url)): ?>
@@ -96,7 +98,7 @@ use yii\widgets\ActiveForm;
                 ]);
                 ?>
             </div>
-            <?= $form->field($model, 'ebrd')->checkbox(['maxlength' => true,'title' => $model->getAttributeLabel('ebrd'), 'placeholder' => $model->getAttributeLabel('ebrd')]) ?>
+            <?= $form->field($model, 'ebrd')->checkbox(['maxlength' => true, 'title' => $model->getAttributeLabel('ebrd'), 'placeholder' => $model->getAttributeLabel('ebrd')]) ?>
 
         </div>
     </div>

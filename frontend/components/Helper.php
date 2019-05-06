@@ -303,4 +303,5 @@ class Helper extends Component
         return date("Y-m-d", strtotime($date));
 
     }
+
 }

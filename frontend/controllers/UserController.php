@@ -2,20 +2,19 @@
 
 namespace frontend\controllers;
 
-use frontend\components\Helper;
 use frontend\models\Companies;
 use frontend\models\Countries;
 use frontend\models\RulesName;
+use frontend\models\search\UserSearch;
+use frontend\models\User;
 use frontend\models\UserCountries;
 use frontend\models\UserRules;
 use frontend\models\UsersGrup;
 use frontend\models\UsersGrupes;
 use Yii;
-use frontend\models\User;
-use frontend\models\search\UserSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -90,6 +89,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $model->scenario = $model::SCENARIO_CREATE;
         if (Yii::$app->request->isPost) {
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $name = $model->upload();
@@ -99,7 +99,6 @@ class UserController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())) {
-
             $id = $model->SaveUser();
             if (!empty($id)
                 && UserRules::SaveRulesByUserId(Yii::$app->request->post('rules'), $id)

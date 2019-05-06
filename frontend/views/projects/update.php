@@ -30,7 +30,7 @@ $this->title = 'Update Project: ' . $model->ifi_name;
 
             <div class="filter-bar">
                 <i id="show-left-slide" class="fa fa-bars"></i>
-                <span class="font-14 font-w-300 gray-txt"><?= Html::encode($this->title) ?></span>
+                <h3 class=" gray-txt"><?= Html::encode($this->title) ?></h3>
             </div>
             <div class="access-form">
                 <?= $this->render('_form', [

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <i id="show-left-slide" class="fa fa-bars"></i>
                 <span class="font-14 font-w-300 gray-txt"><?= Html::encode($this->title) ?></span>
                 <div class="btn-right">
-                    <?= Html::a('Reset', ['index'], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Reset filter', ['index'], ['class' => 'btn btn-primary']) ?>
                     <?= Html::a('Create user', ['create'], ['class' => 'btn btn-primary']) ?>
                     <?= Html::a('Create group', ['users-grup/create'], ['class' => 'btn btn-primary']) ?>
                 </div>

@@ -28,6 +28,7 @@ function UpdateProjectList() {
                         {"orderable": true},
                         {"orderable": true},
                         {"orderable": true},
+                        {"orderable": true},
                         {"orderable": false}
                     ]
                 });

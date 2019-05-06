@@ -11,6 +11,10 @@
     color: #a6abab;
 }
 
+.access-form select {
+    color: #555 !important;
+}
+
 .access-form input[type="text"] {
     border: 1px #e9edf8 solid;
     width: 100%;
@@ -21,7 +25,7 @@
     outline: none;
     font-family: Roboto;
     font-size: 15px;
-    color: #a6abab;
+    color: #555;
 }
 
 .help-block-error, .help-block {
@@ -347,4 +351,14 @@ label .bullet {
 
 .m-hide {
     display: none;
+}
+
+.creator-info {
+    bottom: 12px;
+    left: 5px;
+    color: #512178 !important;
+}
+
+.summary {
+    display: none !important;
 }
