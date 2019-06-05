@@ -11,7 +11,7 @@
                             class="fa fa-user" aria-hidden="true"></i>Users</a>
             </li>
         <?php endif; ?>
-        <?php if (Yii::$app->rule_check->CheckByKay(['super_admin'])): ?>
+        <?php if (Yii::$app->rule_check->CheckByKay(['super_admin']) && 0): ?>
             <li><a href="/users-group"
                    class="d-block <?= $active == 'user-groups' ? 'active' : '' ?> members no-underline white-txt"><i
                             class="fa fa-users"></i>User groups</a>
@@ -33,8 +33,16 @@
                             class="fa  fa-file-text-o"></i>Documents</a>
             </li>
            <li><a href="/project-sectors"
-                  class="d-block  <?= $active == 'project-sectors' ? 'active' : '' ?> countries no-underline white-txt"><i
+                         class="d-block  <?= $active == 'project-sectors' ? 'active' : '' ?> countries no-underline white-txt"><i
                      class="fa  fa-file-text-o"></i>Project sectors</a>
+           </li>
+           <li><a href="/services"
+                  class="d-block  <?= $active == 'services' ? 'active' : '' ?> countries no-underline white-txt"><i
+                     class="fa  fa-file-text-o"></i>Services</a>
+           </li>
+           <li><a href="/components"
+                  class="d-block  <?= $active == 'components' ? 'active' : '' ?> countries no-underline white-txt"><i
+                     class="fa  fa-file-text-o"></i>Components</a>
            </li>
         <?php endif; ?>
 

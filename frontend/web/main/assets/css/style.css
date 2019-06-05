@@ -555,7 +555,8 @@ div#id_checklist_buttons button {
     background-color: #00adc7;
     line-height: inherit;
     padding: 10px 15px;
-    outline:none;
+	outline:none;
+	margin: 5px;
 }
 
 .btn-right .btn:hover,
@@ -1682,7 +1683,7 @@ form#w0 .select2-container--krajee .select2-selection {
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 1px #e9edf8 solid;
-    min-height: 44px;
+    /* min-height: 44px; */
 }
 
 #w0 h1 {
@@ -2240,7 +2241,7 @@ textarea::placeholder {
 /* 04.05 */
 
 #projects-data-t {
-	border-collapse: separate;
+	border-collapse: collapse;
 	overflow: hidden;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -2284,7 +2285,8 @@ textarea::placeholder {
 }
 
 .grid-view table{
-	border-collapse: separate;
+	/* border-collapse: separate; */
+	border-collapse: collapse;
 	border: none;
 	overflow: hidden;
 	border-top-left-radius: 10px;
@@ -2313,6 +2315,10 @@ textarea::placeholder {
 .filter-bar .gray-txt{
 	color: #7846bf;
 	font-weight: 700;
+}
+
+#w0 .field-user-password_hash{
+	margin-top: 15px;
 }
 
 

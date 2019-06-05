@@ -20,7 +20,7 @@ $index = 1;
             <th>Project name</th>
             <th>Country</th>
             <th>Tender stage</th>
-            <th>Moderator</th>
+            <th>Manager</th>
             <th><i class="fa fa-clock-o"></i> Deadline</th>
             <th></th>
         </tr>

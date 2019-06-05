@@ -133,7 +133,6 @@ class ProjectsSearch extends Projects
             'lead_partner' => $this->lead_partner,
             'service_line' => $this->service_line,
             'project_value' => $this->project_value,
-            'project_components' => $this->project_components,
 
         ]);
 
@@ -170,8 +169,12 @@ class ProjectsSearch extends Projects
             ->andFilterWhere(['like', 'p.submission_method', $this->submission_method])
             ->andFilterWhere(['like', 'p.evaluation_decision_making', $this->evaluation_decision_making])
             ->andFilterWhere(['like', 'p.location_within_country', $this->location_within_country])
+            ->andFilterWhere(['like', 'p.project_components', $this->project_components])
             ->andFilterWhere(['like', 'p.beneficiary_stakeholder', $this->beneficiary_stakeholder]);
 
         return $dataProvider;
     }
 }
+
+
+

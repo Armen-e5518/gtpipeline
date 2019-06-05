@@ -4,7 +4,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\search\ServicessSearch */
+/* @var $searchModel frontend\models\search\ComponentsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $this->registerCssFile('/css/src.css');
 $this->registerCssFile('/main/assets/css/style.css');
@@ -14,12 +14,13 @@ $this->registerJsFile('https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery
 $this->registerJsFile('/main/assets/js/custom.js');
 
 
-$this->title = 'Service line';
+
+$this->title = 'Components';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid d-flex my-content">
-   <?= $this->render('/common/left-menu', ['active' => 'services']) ?>
+   <?= $this->render('/common/left-menu', ['active' => 'components']) ?>
    <div class="wrapper">
       <?= $this->render('/common/top-bar') ?>
       <div class="main m-members">
@@ -27,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <i id="show-left-slide" class="fa fa-bars"></i>
             <span class="font-14 font-w-300 gray-txt"><?= Html::encode($this->title) ?></span>
             <div class="btn-right">
-               <?= Html::a('Create service line', ['create'], ['class' => 'btn btn-primary']) ?>
+               <?= Html::a('Create components', ['create'], ['class' => 'btn btn-primary']) ?>
             </div>
          </div>
          <div>
@@ -36,7 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
                'filterModel' => $searchModel,
                'columns' => [
                   ['class' => 'yii\grid\SerialColumn'],
+
+//                  'id',
                   'name',
+
                   [
                      'class' => 'yii\grid\ActionColumn',
                      'header' => 'Actions',
@@ -70,6 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
    </div>
 </div>
+
 
 
 

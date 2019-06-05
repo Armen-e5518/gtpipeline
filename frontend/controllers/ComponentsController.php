@@ -2,17 +2,17 @@
 
 namespace frontend\controllers;
 
-use frontend\models\search\ServicessSearch;
-use frontend\models\Services;
+use frontend\models\Components;
+use frontend\models\search\ComponentsSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * ServicesController implements the CRUD actions for Services model.
+ * ComponentsController implements the CRUD actions for Components model.
  */
-class ServicesController extends Controller
+class ComponentsController extends Controller
 {
    /**
     * @inheritdoc
@@ -30,12 +30,12 @@ class ServicesController extends Controller
    }
 
    /**
-    * Lists all Services models.
+    * Lists all Components models.
     * @return mixed
     */
    public function actionIndex()
    {
-      $searchModel = new ServicessSearch();
+      $searchModel = new ComponentsSearch();
       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
       return $this->render('index', [
@@ -45,7 +45,7 @@ class ServicesController extends Controller
    }
 
    /**
-    * Displays a single Services model.
+    * Displays a single Components model.
     * @param integer $id
     * @return mixed
     */
@@ -57,13 +57,13 @@ class ServicesController extends Controller
    }
 
    /**
-    * Creates a new Services model.
+    * Creates a new Components model.
     * If creation is successful, the browser will be redirected to the 'view' page.
     * @return mixed
     */
    public function actionCreate()
    {
-      $model = new Services();
+      $model = new Components();
 
       if ($model->load(Yii::$app->request->post()) && $model->save()) {
          return $this->redirect(['index']);
@@ -75,7 +75,7 @@ class ServicesController extends Controller
    }
 
    /**
-    * Updates an existing Services model.
+    * Updates an existing Components model.
     * If update is successful, the browser will be redirected to the 'view' page.
     * @param integer $id
     * @return mixed
@@ -94,7 +94,7 @@ class ServicesController extends Controller
    }
 
    /**
-    * Deletes an existing Services model.
+    * Deletes an existing Components model.
     * If deletion is successful, the browser will be redirected to the 'index' page.
     * @param integer $id
     * @return mixed
@@ -107,15 +107,15 @@ class ServicesController extends Controller
    }
 
    /**
-    * Finds the Services model based on its primary key value.
+    * Finds the Components model based on its primary key value.
     * If the model is not found, a 404 HTTP exception will be thrown.
     * @param integer $id
-    * @return Services the loaded model
+    * @return Components the loaded model
     * @throws NotFoundHttpException if the model cannot be found
     */
    protected function findModel($id)
    {
-      if (($model = Services::findOne($id)) !== null) {
+      if (($model = Components::findOne($id)) !== null) {
          return $model;
       } else {
          throw new NotFoundHttpException('The requested page does not exist.');

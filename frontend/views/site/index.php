@@ -302,17 +302,14 @@ $this->title = 'Grant Thornton';
          <div class="card-control-toolkit">
             <ul>
                <li>
-                        <span class="d-block gray-txt margin-btn-5 font-w-300" title="Date created">
-                            <i class="fa fa-clock-o"></i> Created: <span id="id_project_created">
-                            </span>
-                        </span>
+                  <span class="d-block gray-txt margin-btn-5 font-w-300" title="Date created">
+                     <i class="fa fa-clock-o"></i> Created: <span id="id_project_created"></span>
+                  </span>
                </li>
                <li>
-                        <span class="d-block gray-txt margin-btn-5 font-w-700"
-                              title="Deadline project">
-                            <i class="fa fa-clock-o"></i> Deadline: <span id="id_project_deadline">
-                            </span>
-                        </span>
+                  <span class="d-block gray-txt margin-btn-5 font-w-700" title="Deadline project">
+                     <i class="fa fa-clock-o"></i> Deadline: <span id="id_project_deadline"></span>
+                  </span>
                </li>
             </ul>
             <h6 class="font-w-700 font-16">Project status</h6>
@@ -337,7 +334,7 @@ $this->title = 'Grant Thornton';
             <select id="name_firm"
                     title="Select from the dropdown"
                     class="change-status-type padding-5 transparent-bg  gray-txt font-15">
-               <?php foreach (\frontend\components\DropdownData::name_firm() as $kay => $d): ?>
+               <?php foreach (\frontend\models\Companies::GetCompanies() as $kay => $d): ?>
                   <option value="<?= $kay ?>"><?= $d ?></option>
                <?php endforeach; ?>
             </select>
@@ -354,31 +351,31 @@ $this->title = 'Grant Thornton';
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('consultants') ?></span>
-            <input id="consultants"
+            <input maxlength="250" id="consultants"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('no_professional_staff') ?></span>
-            <input id="no_professional_staff"
+            <input maxlength="250" id="no_professional_staff"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('staff_months') ?></span>
-            <input id="staff_months"
+            <input maxlength="250" id="staff_months"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('partner_contact') ?></span>
-            <input id="partner_contact"
+            <input maxlength="250" id="partner_contact"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('project_value') ?></span>
-            <input id="project_value"
+            <input maxlength="250" id="project_value"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
@@ -395,58 +392,59 @@ $this->title = 'Grant Thornton';
            id="id_pop_accepted"
            class="subpopup filtering-popup card-detail-popup brd-rad-4 p-rel">
          <i class="popup-close p-abs" title="Close"></i>
+
          <div class="list-data">
             <span><?= $model->getAttributeLabel('address_client') ?></span>
-            <input id="address_client"
+            <input maxlength="250" id="address_client"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
+            <span><?= $model->getAttributeLabel('start_date') ?></span>
+            <input maxlength="250" id="start_date"
+                   class="d-block font-w-300 brd-rad-4 w-100-perc">
+         </div>
+         <div class="list-data">
             <span><?= $model->getAttributeLabel('duration_assignment') ?></span>
-            <input id="duration_assignment"
+            <input maxlength="250" id="duration_assignment"
+                   type="text"
+                   class="d-block font-w-300 brd-rad-4 w-100-perc">
+         </div>
+         <div class="list-data">
+            <span><?= $model->getAttributeLabel('completion_date') ?></span>
+            <input maxlength="250" id="completion_date"
                    type="text"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('no_provided_staff') ?></span>
-            <input id="no_provided_staff"
-                   class="d-block font-w-300 brd-rad-4 w-100-perc">
-         </div>
-         <div class="list-data">
-            <span><?= $model->getAttributeLabel('narrative_description') ?></span>
-            <input id="narrative_description"
-                   class="d-block font-w-300 brd-rad-4 w-100-perc">
-         </div>
-         <div class="list-data">
-            <span><?= $model->getAttributeLabel('services_value') ?></span>
-            <input id="services_value"
-                   class="d-block font-w-300 brd-rad-4 w-100-perc">
-         </div>
-         <div class="list-data">
-            <span><?= $model->getAttributeLabel('start_date') ?></span>
-            <input id="start_date"
-                   class="d-block font-w-300 brd-rad-4 w-100-perc">
-         </div>
-         <div class="list-data">
-            <span><?= $model->getAttributeLabel('completion_date') ?></span>
-            <input id="completion_date"
-                   type="text"
+            <input maxlength="250" id="no_provided_staff"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('name_senior_professional') ?></span>
-            <input id="name_senior_professional"
+            <input maxlength="250" id="name_senior_professional"
+                   class="d-block font-w-300 brd-rad-4 w-100-perc">
+         </div>
+         <div class="list-data">
+            <span><?= $model->getAttributeLabel('narrative_description') ?></span>
+            <input maxlength="250" id="narrative_description"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('proportion') ?></span>
-            <input id="proportion"
+            <input maxlength="250" id="proportion"
+                   class="d-block font-w-300 brd-rad-4 w-100-perc">
+         </div>
+         <div class="list-data">
+            <span><?= $model->getAttributeLabel('services_value') ?></span>
+            <input maxlength="250" id="services_value"
                    class="d-block font-w-300 brd-rad-4 w-100-perc">
          </div>
          <div class="list-data">
             <span><?= $model->getAttributeLabel('actual_services_description') ?></span>
-            <input id="actual_services_description"
-                   class="d-block font-w-300 brd-rad-4 w-100-perc">
+            <textarea id="actual_services_description"
+                      class="d-block font-w-300 brd-rad-4 w-100-perc" style="resize: vertical"></textarea>
          </div>
          <div class="list-data" id="id_checklist_buttons" align="center">
             <button title="Save" id="id_save_accepted"

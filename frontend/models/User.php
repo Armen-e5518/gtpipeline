@@ -241,7 +241,7 @@ class User extends \yii\db\ActiveRecord
 
    public static function GetAllUsers()
    {
-      return self::find()->asArray()->all();
+      return self::find()->where(['status' => \common\models\User::STATUS_ACTIVE])->asArray()->all();
    }
 
    public static function GetUsersByIds($ids = null)

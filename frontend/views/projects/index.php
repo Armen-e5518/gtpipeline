@@ -68,9 +68,10 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                'start_date',
                'completion_date',
                'services_value',
-               ['attribute' => 'service_line',
+               [
+                  'attribute' => 'service_line',
                   'value' => function ($model) {
-                     return $model->service_line ? \frontend\components\DropdownData::service_line()[$model->service_line] : '';
+                     return $model->service_line ? \frontend\models\Services::GetServices()[$model->service_line] : '';
                   },
                ],
                [
@@ -88,7 +89,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                      return '';
                   },
                ],
-                ['attribute' => 'project_components',
+               ['attribute' => 'project_components',
                   'value' => function ($model) {
                      return $model->project_components ? \frontend\components\DropdownData::project_components()[$model->project_components] : '';
                   },
@@ -100,7 +101,7 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                'no_professional_staff',
                'name_senior_professional',
                'actual_services_description',
-                 ['attribute' => 'assignment_id',
+               ['attribute' => 'assignment_id',
                   'value' => function ($model) {
                      return $model->assignment_id ? \yii\helpers\ArrayHelper::map(\frontend\models\Assignments::find()->all(), 'id', 'name')[$model->assignment_id] : '';
                   },
@@ -142,24 +143,27 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                      ]
                   ]),
                ],
-               'location_within_country',
-               'services_value',
+               [
+                  'attribute' => 'services_value',
+                  'label' => 'Value of the services '
+               ],
 
                ['attribute' => 'service_line',
                   'value' => function ($model) {
-                     return $model->service_line ? \frontend\components\DropdownData::service_line()[$model->service_line] : '';
+                     return $model->service_line ? \frontend\models\Services::GetServices()[$model->service_line] : '';
                   },
                   'filter' => \kartik\select2\Select2::widget([
                      'model' => $searchModel,
                      'attribute' => 'service_line',
-                     'data' => \frontend\components\DropdownData::service_line(),
+                     'data' => \frontend\models\Services::GetServices(),
                      'options' => [
-                        'placeholder' => 'Services value...',
+                        'placeholder' => 'Services line...',
                      ]
                   ]),
                ],
                [
                   'attribute' => 'project_sectors',
+                  'label' => 'Project sectors',
                   'value' => function ($model) {
                      if ($model->project_sectors) {
                         $date = \frontend\models\ProjectSectors::getAll();
@@ -183,12 +187,21 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                ],
                ['attribute' => 'project_components',
                   'value' => function ($model) {
-                     return $model->project_components ? \frontend\components\DropdownData::project_components()[$model->project_components] : '';
+                     if ($model->project_sectors) {
+                        $date = \frontend\models\Components::GetComponents();
+                        $d = explode(',', $model->project_components);
+                        $value = [];
+                        foreach ($d as $v) {
+                           array_push($value, $date[$v]);
+                        }
+                        return implode(',', $value);
+                     }
+                     return '';
                   },
                   'filter' => \kartik\select2\Select2::widget([
                      'model' => $searchModel,
                      'attribute' => 'project_components',
-                     'data' => \frontend\components\DropdownData::project_components(),
+                     'data' => \frontend\models\Components::GetComponents(),
                      'options' => [
                         'placeholder' => 'Project components..',
                      ]
@@ -237,11 +250,14 @@ $template = (Yii::$app->rule_check->CheckByKay(['super_admin'])) ? "{view}{updat
                'dataProvider' => $dataProvider,
                'columns' => $gridColumnsMenu,
                'target' => ExportMenu::TARGET_SELF,
+               'filename' => 'Report',
                'exportConfig' =>
                   [
                      ExportMenu::FORMAT_HTML => false,
                      ExportMenu::FORMAT_TEXT => false,
                      ExportMenu::FORMAT_PDF => false,
+                     ExportMenu::FORMAT_CSV => false,
+                     ExportMenu::FORMAT_EXCEL => true,
                   ]
 
             ]);

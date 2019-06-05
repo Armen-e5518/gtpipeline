@@ -356,9 +356,49 @@ label .bullet {
 .creator-info {
     bottom: 12px;
     left: 5px;
-    color: #512178 !important;
+    color: #fff !important;
 }
 
 .summary {
     display: none !important;
+}
+
+#id_project_forms .create-b, #id_project_forms .step-b {
+    border-top: 7px solid #02adc7;
+    border-radius: 24px;
+    margin: -5px;
+    padding-top: 10px;
+}
+
+#id_project_forms .step-1 {
+    border-top: 3px solid #96d700;
+    border-radius: 24px;
+    margin: 5px;
+}
+
+#id_project_forms .step-1 h1 {
+    color: #96d700;
+    font-weight: 700;
+}
+
+#id_project_forms .step-2 {
+    border-top: 3px solid #512178;
+    border-radius: 24px;
+    margin: 5px;
+}
+
+#id_project_forms .step-2 h1 {
+    color: #512178;
+    font-weight: 700;
+}
+
+#m-menu .m-inactive a {
+    color: #c4b8b8 !important;
+}
+
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+#id_pop_moderator .span.select2.select2-container.select2-container--default{
+    width: 100% !important;
 }

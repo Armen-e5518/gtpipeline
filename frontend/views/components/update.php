@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Services */
+/* @var $model frontend\models\Components */
 $this->registerCssFile('/css/src.css');
 $this->registerCssFile('/main/assets/css/style.css');
 $this->registerCssFile('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
@@ -11,13 +11,13 @@ $this->registerCssFile('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/c
 $this->registerJsFile('https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js');
 $this->registerJsFile('/main/assets/js/custom.js');
 
-$this->title = 'Update service line: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Services', 'url' => ['index']];
+$this->title = 'Update Components: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Components', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="container-fluid d-flex my-content">
-   <?= $this->render('/common/left-menu', ['active' => 'services']) ?>
+   <?= $this->render('/common/left-menu', ['active' => 'components']) ?>
    <div class="wrapper">
       <?= $this->render('/common/top-bar') ?>
       <div class="main m-members ">
@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = 'Update';
             <?= $this->render('_form', [
                'model' => $model,
             ]) ?>
+
          </div>
       </div>
    </div>
