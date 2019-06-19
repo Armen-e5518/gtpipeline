@@ -243,7 +243,8 @@ class ProjectsController extends Controller
             }
          }
          if ($errors && UserNotifications::NewNotificationsByUsers(Yii::$app->request->post('members'), $model->id, 1)) {
-            Mail::SandMailAllUsers($model->id);
+//            Mail::SandMailAllUsers($model->id);
+            Mail::SandMailAllMembers($model->id,Yii::$app->request->post('members'));
             return $this->redirect(['site/projects']);
          }
       } else {

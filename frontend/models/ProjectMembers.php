@@ -58,6 +58,7 @@ class ProjectMembers extends \yii\db\ActiveRecord
                 $model->project_id = $project_id;
                 $model->user_id = $member;
                 if (!$model->save()) {
+                   die;
                     $flag = false;
                 }
             }

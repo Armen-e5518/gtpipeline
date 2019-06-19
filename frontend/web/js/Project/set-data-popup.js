@@ -145,6 +145,7 @@ $(document).ready(function () {
             }
         });
     });
+
     $('.filtering-popup').on('click', '.remove-member', function () {
         if (confirm("Do you really want to delete!") == true) {
             var ob = $(this);
@@ -247,12 +248,12 @@ function SetProjectDataInHtml(d_params, d_project_data, d_members_data, d_attach
     // $('#id_project_members').html('');
 // -------------/
     if (d_project_data.status == 0) {
-        $('#id_project_members_title_e').hide();
+        $('#id_project_members_title_e').show();
         $('#id_buttons').show();
         $('#id_approve').show();
         $('#id_approve_creator').show();
         $('#id_reject').show();
-        $('#id_decision_makers_edit').hide();
+        $('#id_decision_makers_edit').show();
     } else {
         $('#id_project_members_title_e').show();
     }

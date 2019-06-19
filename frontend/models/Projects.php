@@ -138,7 +138,7 @@ class Projects extends \yii\db\ActiveRecord
             'location_within_country', 'address_client', 'duration_assignment', 'services_value', 'start_date',
             'completion_date'], 'string', 'max' => 255],
          [['name_senior_professional', 'actual_services_description', 'name_firm', 'project_code'], 'string', 'max' => 255],
-         [['actual_services_description','eligibility_comment'], 'string'],
+         [['actual_services_description', 'eligibility_comment'], 'string'],
          [['financed_by', 'required_language'], 'string', 'max' => 255],
          [['project_sectors', 'narrative_description', 'project_components'], 'string', 'max' => 255],
          [['client_industry', 'service_line', 'eligibility_restrictions', 'selection_method', 'submission_method'], 'integer'],
@@ -166,7 +166,7 @@ class Projects extends \yii\db\ActiveRecord
          'budget' => 'Budget',
          'duration' => 'Duration',
          'eligibility_restrictions' => 'Eligibility restrictions', //000
-         'eligibility_comment' => 'Eligibility restrictions', //000
+         'eligibility_comment' => 'Eligibility comment', //000
          'selection_method' => 'Selection method',
          'submission_method' => 'Submission method',
          'evaluation_decision_making' => 'Evaluation/decision making body',
@@ -390,26 +390,26 @@ class Projects extends \yii\db\ActiveRecord
 //                ['=', 'p.status', 0],
 ////                ['IS', 'p.grup_id', (new Expression('Null'))],
 //            ],
-
-      $query->andFilterWhere(['OR',
-         ['IN', 'p.id', $group_ids],
-         ['IN', 'p.id', $members_ids],
-         [
-            'AND',
-            ['=', 'p.creator_id', Yii::$app->user->getId()],
-            ['=', 'p.status', 0],
-         ],
+      $query->where(['p.id' => ProjectMembers::GetProjectIdSByUsersId(\Yii::$app->user->getId())]);
+      $query->orFilterWhere(['OR',
+//         ['IN', 'p.id', $group_ids],
+//         ['IN', 'p.id', $members_ids],
+//         [
+//            'AND',
+//            ['=', 'p.creator_id', Yii::$app->user->getId()],
+//            ['=', 'p.status', 0],
+//         ],
 
          [
             'AND',
             ['=', 'p.moderator_id', Yii::$app->user->getId()],
             ['<>', 'p.status', 0],
          ],
-         [
-            'AND',
-            ['=', 'p.groups_flag', 0],
-            ['=', 'p.status', 0],
-         ]
+//         [
+//            'AND',
+//            ['=', 'p.groups_flag', 0],
+//            ['=', 'p.status', 0],
+//         ]
       ]);
 
       if (!empty($params['a'])) {
@@ -667,6 +667,7 @@ class Projects extends \yii\db\ActiveRecord
 
    public static function GetProjectRules($id)
    {
+      return 'creator';
       $model = self::findOne($id);
       if ($model['moderator_id'] == Yii::$app->user->getId()) {
          return 'moderator';

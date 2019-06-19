@@ -98,9 +98,9 @@ use yii\helpers\Html;
             <label class="control-label">Restriction by user</label>
             <div class="add-countries">
                <?= \kartik\select2\Select2::widget([
-                  'name' => 'groups',
-                  'value' => $members,
-                  'data' => $select_members,
+                  'name' => 'members',
+                  'data' => $members,
+                  'value' => $select_members,
                   'maintainOrder' => true,
                   'options' => ['placeholder' => 'Restriction by user   (Leave empty for public visibility)...', 'id' => 'add-groups', 'multiple' => true],
                   'pluginOptions' => [

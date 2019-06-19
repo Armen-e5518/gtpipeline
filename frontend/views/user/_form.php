@@ -26,19 +26,6 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'username')->textInput(['maxlength' => true,'title' => $model->getAttributeLabel('username'), 'autocomplete'=>"off", 'id' => 'u_name', 'placeholder' => $model->getAttributeLabel('username')])->label(false) ?>
 
-            <div class="add-countries">
-                <?= \kartik\select2\Select2::widget([
-                    'name' => 'groups',
-                    'value' => [],
-                    'data' => $groups,
-                    'maintainOrder' => true,
-                    'options' => ['placeholder' => 'Groups ...', 'id' => 'add-country', 'multiple' => true],
-                    'pluginOptions' => [
-                        'tags' => true,
-                    ],
-                ]);
-                ?>
-            </div>
 
         </div>
         <div class="col-md-6">

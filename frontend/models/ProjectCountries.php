@@ -131,5 +131,11 @@ class ProjectCountries extends \yii\db\ActiveRecord
         }
         return [];
     }
-
+   public static function GetProjectIdsByCountryIdS($country_ids = null)
+   {
+      if (!empty($country_ids)) {
+         return self::find()->select('project_id')->where(['country_id' => $country_ids])->column();
+      }
+      return [];
+   }
 }
